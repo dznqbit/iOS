@@ -24,9 +24,13 @@
 // 0-1-2
 
 @property (weak) IBOutlet NSSegmentedCell *zeroOneTwoOutlet;
+@property (weak) IBOutlet NSTextFieldCell *zeroOneTwoLabel;
+@property (weak) IBOutlet NSColor *zeroOneTwoColor;
 
 - (IBAction)zeroOneTwoClick:(id)sender;
-@property (weak) IBOutlet NSTextFieldCell *zeroOneTwoLabel;
+- (void)zeroOneTwoCycleColor;
+
+
 
 // Seasons
 

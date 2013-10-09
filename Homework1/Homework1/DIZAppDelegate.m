@@ -14,6 +14,7 @@
     [self updateSeasonsLabel:@"December"];
     [self updateNowLabel];
     [self updateSquareValue: [[self squareSlider] doubleValue]];
+    [self zeroOneTwoCycleColor];
 }
 
 // Top Label
@@ -47,6 +48,22 @@
     [[self zeroOneTwoLabel] setTitle:labelString];
     
     // [numberFormatter release]; ARC prevents this
+}
+
+- (void)zeroOneTwoCycleColor {
+    NSTimeInterval timeInMilliseconds = [[NSDate date] timeIntervalSince1970];
+
+    float   redColor = sin(timeInMilliseconds) / 2.5 + 0.4,
+            greenColor = sin(timeInMilliseconds * 6) / 2.5 + 0.4,
+            blueColor = sin(timeInMilliseconds * 7) / 2.5 + 0.4;
+    
+    [[self zeroOneTwoLabel] setTextColor:[NSColor colorWithCalibratedRed:redColor
+                                                                   green:greenColor
+                                                                    blue:blueColor
+                                                                   alpha:1]
+    ];
+    
+    [self performSelector:@selector(zeroOneTwoCycleColor) withObject:self afterDelay:0.002];
 }
 
 // Seasons
