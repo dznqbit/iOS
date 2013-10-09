@@ -79,7 +79,7 @@
 - (IBAction)nowButtonClick:(id)sender {  [self updateNowLabel]; }
 - (void)updateNowLabel {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"dd/mm/yyyy, HH:mm:ss a"];
+    [dateFormatter setDateFormat:@"dd/MM/yyyy, HH:mm:ss a"];
     [[self nowLabel] setTitle:[dateFormatter stringFromDate:[NSDate date]]];
 }
 
