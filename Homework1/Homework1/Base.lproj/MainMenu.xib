@@ -726,19 +726,29 @@
                         <font key="titleFont" metaFont="system"/>
                     </box>
                     <segmentedControl verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yQy-GZ-lmx">
-                        <rect key="frame" x="24" y="472" width="189" height="24"/>
+                        <rect key="frame" x="24" y="472" width="150" height="24"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <segmentedCell key="cell" alignment="left" style="rounded" trackingMode="selectOne" id="rMF-Jf-ZBd">
                             <font key="font" metaFont="system"/>
                             <segments>
-                                <segment width="61"/>
-                                <segment width="60" selected="YES" tag="1"/>
-                                <segment width="60">
-                                    <nil key="label"/>
-                                </segment>
+                                <segment label="Zero"/>
+                                <segment label="One" selected="YES" tag="1"/>
+                                <segment label="Two"/>
                             </segments>
+                            <connections>
+                                <action selector="zeroOneTwoClick:" target="494" id="cIa-ol-yHu"/>
+                            </connections>
                         </segmentedCell>
                     </segmentedControl>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Se-1k-5ti">
+                        <rect key="frame" x="187" y="435" width="179" height="99"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="1: One" id="gRT-VK-Gnq">
+                            <font key="font" size="54" name="BrushScript-Regular"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
                 </subviews>
             </view>
         </window>
@@ -751,6 +761,8 @@
                 <outlet property="topLabelCopyClick" destination="Md7-bc-fne" id="eLA-9b-efU"/>
                 <outlet property="topLabelTextInput" destination="a4c-U0-y7P" id="w7i-Yh-rD3"/>
                 <outlet property="window" destination="371" id="532"/>
+                <outlet property="zeroOneTwoLabel" destination="gRT-VK-Gnq" id="pB9-gr-ERU"/>
+                <outlet property="zeroOneTwoOutlet" destination="rMF-Jf-ZBd" id="lbA-gw-VBS"/>
             </connections>
         </customObject>
         <customObject id="420" customClass="NSFontManager"/>

@@ -11,9 +11,9 @@
 @implementation DIZAppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
-{
-    // Insert code here to initialize your application
-}
+{}
+
+// Top Label
 
 - (IBAction)topLabelHelloClick:(id)sender {
     [[self topLabel] setTitle:@"Hello"];
@@ -28,6 +28,22 @@
      [self topLabel]
      setTitle:[[self topLabelTextInput] stringValue]
      ];
+}
+
+// 0-1-2
+
+- (IBAction)zeroOneTwoClick:(id)sender {
+    NSInteger selectedIndex = [[self zeroOneTwoOutlet] selectedSegment];
+    
+    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+    [numberFormatter setNumberStyle:NSNumberFormatterSpellOutStyle];
+    [numberFormatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en"]];
+    NSString *numberString = [[numberFormatter stringFromNumber:[NSNumber numberWithInt:(int)selectedIndex]] capitalizedString];
+    
+    NSString *labelString = [NSString stringWithFormat:@"%d: %@", (int)selectedIndex, numberString];
+    [[self zeroOneTwoLabel] setTitle:labelString];
+    
+    // [numberFormatter release]; ARC prevents this
 }
 
 @end
