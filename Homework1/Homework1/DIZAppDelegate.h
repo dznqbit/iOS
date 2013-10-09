@@ -53,7 +53,17 @@
 @property (weak) IBOutlet NSTextFieldCell *squareValueLabel;
 @property (weak) IBOutlet NSTextFieldCell *squareSquareLabel;
 
-
 // Voice
+
+@property (weak) IBOutlet NSSpeechSynthesizer *speechSynthesizer;
+@property (weak) IBOutlet NSSegmentedCell *speechVoiceChoiceOutlet;
+@property (weak) IBOutlet NSSliderCell *speechVoiceSpeedOutlet;
+@property (weak) IBOutlet NSTextFieldCell *speechScriptOutlet;
+
+- (IBAction)speechVoiceChoiceClick:(id)sender;
+- (IBAction)speechVoiceSpeedUpdate:(id)sender;
+- (IBAction)speechSpeakClick:(id)sender;
+- (IBAction)speechShushClick:(id)sender;
+
 
 @end

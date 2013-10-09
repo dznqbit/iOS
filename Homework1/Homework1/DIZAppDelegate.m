@@ -80,4 +80,49 @@
 
 // Voice
 
+- (IBAction)speechVoiceChoiceClick:(id)sender {
+    NSString *voiceName = [[self speechVoiceChoiceOutlet] labelForSegment:[[self speechVoiceChoiceOutlet] selectedSegment]];
+    
+    BOOL continueSpeaking = [[self speechSynthesizer] isSpeaking];
+    [[self speechSynthesizer] pauseSpeakingAtBoundary:NSSpeechWordBoundary];
+    
+    while ([[self speechSynthesizer] isSpeaking]) {
+        [NSThread sleepForTimeInterval:0.1];
+    }
+    
+    [[self speechSynthesizer] setVoice:[NSString stringWithFormat: @"com.apple.speech.synthesis.voice.%@", voiceName]];
+
+    // speed gets reset, so set it again.
+    [[self speechSynthesizer] setRate:[[self speechVoiceSpeedOutlet] floatValue]];
+    
+    if (continueSpeaking) {
+        // Ehh... the position seems to get reset here. Bummer.
+        [[self speechSynthesizer] startSpeakingString:[[self speechScriptOutlet] stringValue]];
+    }
+}
+
+- (IBAction)speechVoiceSpeedUpdate:(id)sender {
+    BOOL continueSpeaking = [[self speechSynthesizer] isSpeaking];
+    
+    [[self speechSynthesizer] pauseSpeakingAtBoundary:NSSpeechWordBoundary];
+    
+    while ([[self speechSynthesizer] isSpeaking]) {
+        [NSThread sleepForTimeInterval:0.1];
+    }
+    
+    [[self speechSynthesizer] setRate:[[self speechVoiceSpeedOutlet] floatValue]];
+    
+    if (continueSpeaking) {
+        [[self speechSynthesizer] continueSpeaking];
+    }
+}
+
+- (IBAction)speechSpeakClick:(id)sender {
+    [[self speechSynthesizer] startSpeakingString:[[self speechScriptOutlet] stringValue]];
+}
+
+- (IBAction)speechShushClick:(id)sender {
+    [[self speechSynthesizer] stopSpeaking];
+}
+
 @end

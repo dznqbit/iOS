@@ -703,7 +703,7 @@
                     <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a4c-U0-y7P">
                         <rect key="frame" x="505" y="562" width="225" height="22"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="JvJ-hO-xjI">
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="Luke Rules" drawsBackground="YES" id="JvJ-hO-xjI">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -887,6 +887,79 @@
                         <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <font key="titleFont" metaFont="system"/>
                     </box>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jeh-Vo-w0X">
+                        <rect key="frame" x="26" y="298" width="59" height="17"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Voice:" id="ZAX-zo-h6R">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <segmentedControl verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="t9A-X7-1fF">
+                        <rect key="frame" x="75" y="292" width="256" height="24"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <segmentedCell key="cell" alignment="left" style="rounded" trackingMode="selectOne" id="mva-ss-wxp">
+                            <font key="font" metaFont="system"/>
+                            <segments>
+                                <segment label="Fred" width="83" selected="YES"/>
+                                <segment label="Kathy" width="83" tag="1"/>
+                                <segment label="Bruce" width="82"/>
+                            </segments>
+                            <connections>
+                                <action selector="speechVoiceChoiceClick:" target="494" id="2lL-IC-q7K"/>
+                            </connections>
+                        </segmentedCell>
+                    </segmentedControl>
+                    <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3eN-53-Yos">
+                        <rect key="frame" x="401" y="296" width="166" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <sliderCell key="cell" state="on" alignment="left" maxValue="300" doubleValue="220" tickMarkPosition="above" sliderType="linear" id="cfZ-cW-dca">
+                            <connections>
+                                <action selector="speechVoiceSpeedUpdate:" target="494" id="Aml-EC-Xgk"/>
+                            </connections>
+                        </sliderCell>
+                    </slider>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="i5c-dz-Lwd">
+                        <rect key="frame" x="352" y="298" width="46" height="17"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Speed:" id="W8z-5d-sxb">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kcY-8Z-Xlz">
+                        <rect key="frame" x="576" y="287" width="82" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title="Speak" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Rg7-JS-8YB">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                            <connections>
+                                <action selector="speechSpeakClick:" target="494" id="PhS-Zi-zkb"/>
+                            </connections>
+                        </buttonCell>
+                    </button>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iiI-Rw-4y7">
+                        <rect key="frame" x="654" y="287" width="82" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title="Shush" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="oz2-XW-zgr">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                            <connections>
+                                <action selector="speechShushClick:" target="494" id="gvZ-rz-vqv"/>
+                            </connections>
+                        </buttonCell>
+                    </button>
+                    <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wZG-FW-JBr">
+                        <rect key="frame" x="26" y="20" width="704" height="259"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="left" title="Robot Reader's Theatre" placeholderString="" drawsBackground="YES" id="WcV-Y4-CfY">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
                 </subviews>
             </view>
         </window>
@@ -896,6 +969,11 @@
                 <outlet property="helloButton" destination="rR9-0B-Kmd" id="IdR-3R-3XY"/>
                 <outlet property="nowLabel" destination="n4C-qB-I2L" id="4mZ-q4-Ke5"/>
                 <outlet property="seasonsLabel" destination="EV8-hx-ZvG" id="t4h-0P-O5e"/>
+                <outlet property="speechScriptOutlet" destination="WcV-Y4-CfY" id="Gvi-9A-pa0"/>
+                <outlet property="speechSpeakClick" destination="Rg7-JS-8YB" id="f35-xR-cwY"/>
+                <outlet property="speechSynthesizer" destination="gUg-m9-RIe" id="Nmr-cU-Hho"/>
+                <outlet property="speechVoiceChoiceOutlet" destination="mva-ss-wxp" id="GWo-f6-vCe"/>
+                <outlet property="speechVoiceSpeedOutlet" destination="cfZ-cW-dca" id="fND-Td-tp3"/>
                 <outlet property="squareSlider" destination="pq6-0y-dCU" id="qE3-Wy-T5Q"/>
                 <outlet property="squareSquareLabel" destination="epN-5Y-x1P" id="mGX-GK-X13"/>
                 <outlet property="squareValueLabel" destination="xAs-nl-scb" id="o8R-ss-vAi"/>
@@ -909,5 +987,6 @@
             </connections>
         </customObject>
         <customObject id="420" customClass="NSFontManager"/>
+        <customObject id="gUg-m9-RIe" userLabel="speechSynthesizer" customClass="NSSpeechSynthesizer"/>
     </objects>
 </document>
