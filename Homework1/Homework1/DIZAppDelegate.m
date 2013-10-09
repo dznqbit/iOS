@@ -13,6 +13,7 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     [self updateSeasonsLabel:@"December"];
     [self updateNowLabel];
+    [self updateSquareValue: [[self squareSlider] doubleValue]];
 }
 
 // Top Label
@@ -60,10 +61,23 @@
 
 - (IBAction)nowButtonClick:(id)sender {  [self updateNowLabel]; }
 - (void)updateNowLabel {
-    NSLog(@"hit update");
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"dd/mm/yyyy, HH:mm:ss a"];
     [[self nowLabel] setTitle:[dateFormatter stringFromDate:[NSDate date]]];
 }
+
+// Square
+
+- (IBAction)squareSliderUpdate:(id)sender { [self updateSquareValue: [[self squareSlider] doubleValue]]; }
+- (void)updateSquareValue:(double)doubleValue {
+    [[self squareValueLabel] setTitle:[NSString stringWithFormat:@"%.2f", doubleValue]];
+    
+    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+    [numberFormatter setNumberStyle:NSNumberFormatterSpellOutStyle];
+    [numberFormatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en"]];
+    [[self squareSquareLabel] setTitle:[numberFormatter stringFromNumber:[NSNumber numberWithDouble:(doubleValue * doubleValue)]]];
+}
+
+// Voice
 
 @end

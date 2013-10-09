@@ -653,12 +653,13 @@
             <rect key="contentRect" x="335" y="390" width="750" height="600"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
             <value key="minSize" type="size" width="750" height="600"/>
+            <value key="maxSize" type="size" width="750" height="600"/>
             <view key="contentView" id="372">
                 <rect key="frame" x="0.0" y="0.0" width="750" height="600"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LNp-2x-69H">
-                        <rect key="frame" x="14" y="552" width="73" height="32"/>
+                        <rect key="frame" x="20" y="552" width="73" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="push" title="Hello" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="rR9-0B-Kmd">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -817,7 +818,7 @@
                         <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </box>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="99h-70-q7n">
-                        <rect key="frame" x="14" y="417" width="68" height="32"/>
+                        <rect key="frame" x="20" y="417" width="68" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="push" title="Now" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="geB-I9-X8Z">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -836,6 +837,56 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
+                    <box autoresizesSubviews="NO" verticalHuggingPriority="750" fixedFrame="YES" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="Vhc-KU-1i7">
+                        <rect key="frame" x="26" y="411" width="704" height="5"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                        <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <font key="titleFont" metaFont="system"/>
+                    </box>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="72R-3W-wzK">
+                        <rect key="frame" x="26" y="364" width="90" height="31"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Square" id="pP0-8W-DnQ">
+                            <font key="font" size="26" name="LucidaGrande"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6PD-e1-nwz">
+                        <rect key="frame" x="128" y="369" width="310" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <sliderCell key="cell" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="pq6-0y-dCU">
+                            <connections>
+                                <action selector="squareSliderUpdate:" target="494" id="H7R-Fj-i0K"/>
+                            </connections>
+                        </sliderCell>
+                    </slider>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aj5-DX-iYj">
+                        <rect key="frame" x="449" y="371" width="110" height="17"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Value" id="xAs-nl-scb">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b7y-t8-hyq">
+                        <rect key="frame" x="29" y="332" width="704" height="17"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Squared Value" id="epN-5Y-x1P">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <box autoresizesSubviews="NO" verticalHuggingPriority="750" fixedFrame="YES" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="Nvz-2P-hS0">
+                        <rect key="frame" x="26" y="321" width="704" height="5"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                        <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <font key="titleFont" metaFont="system"/>
+                    </box>
                 </subviews>
             </view>
         </window>
@@ -845,6 +896,9 @@
                 <outlet property="helloButton" destination="rR9-0B-Kmd" id="IdR-3R-3XY"/>
                 <outlet property="nowLabel" destination="n4C-qB-I2L" id="4mZ-q4-Ke5"/>
                 <outlet property="seasonsLabel" destination="EV8-hx-ZvG" id="t4h-0P-O5e"/>
+                <outlet property="squareSlider" destination="pq6-0y-dCU" id="qE3-Wy-T5Q"/>
+                <outlet property="squareSquareLabel" destination="epN-5Y-x1P" id="mGX-GK-X13"/>
+                <outlet property="squareValueLabel" destination="xAs-nl-scb" id="o8R-ss-vAi"/>
                 <outlet property="topLabel" destination="vQM-Ck-eRV" id="g7I-4W-afI"/>
                 <outlet property="topLabelCopyButton" destination="LRa-vi-46F" id="mWC-rH-YmQ"/>
                 <outlet property="topLabelCopyClick" destination="Md7-bc-fne" id="eLA-9b-efU"/>

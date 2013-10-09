@@ -44,5 +44,16 @@
 - (IBAction)nowButtonClick:(id)sender;
 - (void)updateNowLabel;
 
+// Square
+
+- (IBAction)squareSliderUpdate:(id)sender;
+- (void)updateSquareValue:(double)doubleValue;
+
+@property (weak) IBOutlet NSSliderCell *squareSlider;
+@property (weak) IBOutlet NSTextFieldCell *squareValueLabel;
+@property (weak) IBOutlet NSTextFieldCell *squareSquareLabel;
+
+
+// Voice
 
 @end
