@@ -15,4 +15,19 @@
     // Insert code here to initialize your application
 }
 
+- (IBAction)topLabelHelloClick:(id)sender {
+    [[self topLabel] setTitle:@"Hello"];
+}
+
+- (IBAction)topLabelGoodbyeClick:(id)sender {
+    [[self topLabel] setTitle:@"Goodbye"];
+}
+
+- (IBAction)topLabelCopyClick:(id)sender {
+    [
+     [self topLabel]
+     setTitle:[[self topLabelTextInput] stringValue]
+     ];
+}
+
 @end

@@ -12,4 +12,11 @@
 
 @property (assign) IBOutlet NSWindow *window;
 
+@property (weak) IBOutlet NSTextFieldCell *topLabel;
+@property (weak) IBOutlet NSTextField *topLabelTextInput;
+
+- (IBAction)topLabelHelloClick:(id)sender;
+- (IBAction)topLabelGoodbyeClick:(id)sender;
+- (IBAction)topLabelCopyClick:(id)sender;
+
 @end
