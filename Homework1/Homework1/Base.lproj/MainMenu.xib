@@ -719,14 +719,14 @@
                         <font key="titleFont" metaFont="system"/>
                     </box>
                     <box autoresizesSubviews="NO" verticalHuggingPriority="750" fixedFrame="YES" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="9GM-Hs-sgz">
-                        <rect key="frame" x="26" y="420" width="329" height="5"/>
+                        <rect key="frame" x="26" y="456" width="329" height="5"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                         <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <font key="titleFont" metaFont="system"/>
                     </box>
                     <segmentedControl verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yQy-GZ-lmx">
-                        <rect key="frame" x="24" y="472" width="150" height="24"/>
+                        <rect key="frame" x="24" y="491" width="150" height="24"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <segmentedCell key="cell" alignment="left" style="rounded" trackingMode="selectOne" id="rMF-Jf-ZBd">
                             <font key="font" metaFont="system"/>
@@ -741,11 +741,11 @@
                         </segmentedCell>
                     </segmentedControl>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Se-1k-5ti">
-                        <rect key="frame" x="187" y="435" width="179" height="99"/>
+                        <rect key="frame" x="187" y="467" width="179" height="81"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="1: One" id="gRT-VK-Gnq">
                             <font key="font" size="54" name="BrushScript-Regular"/>
-                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="textColor" red="0.25622773836155527" green="0.88262143342391308" blue="0.14546082334620428" alpha="1" colorSpace="calibratedRGB"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
@@ -816,6 +816,26 @@
                         <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                         <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </box>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="99h-70-q7n">
+                        <rect key="frame" x="14" y="417" width="68" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title="Now" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="geB-I9-X8Z">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                            <connections>
+                                <action selector="nowButtonClick:" target="494" id="wdQ-bD-0S6"/>
+                            </connections>
+                        </buttonCell>
+                    </button>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZDD-CW-0Iu">
+                        <rect key="frame" x="90" y="427" width="268" height="17"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="n4C-qB-I2L">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
                 </subviews>
             </view>
         </window>
@@ -823,6 +843,7 @@
             <connections>
                 <outlet property="goodbyeButton" destination="AlG-TS-dTn" id="msU-YR-wrz"/>
                 <outlet property="helloButton" destination="rR9-0B-Kmd" id="IdR-3R-3XY"/>
+                <outlet property="nowLabel" destination="n4C-qB-I2L" id="4mZ-q4-Ke5"/>
                 <outlet property="seasonsLabel" destination="EV8-hx-ZvG" id="t4h-0P-O5e"/>
                 <outlet property="topLabel" destination="vQM-Ck-eRV" id="g7I-4W-afI"/>
                 <outlet property="topLabelCopyButton" destination="LRa-vi-46F" id="mWC-rH-YmQ"/>

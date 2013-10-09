@@ -12,6 +12,7 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     [self updateSeasonsLabel:@"December"];
+    [self updateNowLabel];
 }
 
 // Top Label
@@ -49,24 +50,20 @@
 
 // Seasons
 
-- (IBAction)winterClick:(id)sender {
-    [self updateSeasonsLabel:@"December"];
-}
+- (IBAction)winterClick:(id)sender { [self updateSeasonsLabel:@"December"]; }
+- (IBAction)springClick:(id)sender { [self updateSeasonsLabel:@"March"]; }
+- (IBAction)summerClick:(id)sender { [self updateSeasonsLabel:@"June"]; }
+- (IBAction)fallClick:(id)sender   { [self updateSeasonsLabel:@"September"]; }
+- (void)updateSeasonsLabel:(NSString *)seasonStart { [[self seasonsLabel] setTitle:seasonStart]; }
 
-- (IBAction)springClick:(id)sender {
-    [self updateSeasonsLabel:@"March"];
-}
+// Now Button
 
-- (IBAction)summerClick:(id)sender {
-    [self updateSeasonsLabel:@"June"];
-}
-
-- (IBAction)fallClick:(id)sender {
-    [self updateSeasonsLabel:@"September"];
-}
-
-- (void)updateSeasonsLabel:(NSString *)seasonStart {
-    [[self seasonsLabel] setTitle:seasonStart];
+- (IBAction)nowButtonClick:(id)sender {  [self updateNowLabel]; }
+- (void)updateNowLabel {
+    NSLog(@"hit update");
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"dd/mm/yyyy, HH:mm:ss a"];
+    [[self nowLabel] setTitle:[dateFormatter stringFromDate:[NSDate date]]];
 }
 
 @end

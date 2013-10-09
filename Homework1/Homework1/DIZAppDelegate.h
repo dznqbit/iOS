@@ -37,4 +37,12 @@
 - (IBAction)fallClick:(id)sender;
 
 - (void)updateSeasonsLabel:(NSString *)season;
+
+// Now
+
+@property (weak) IBOutlet NSTextFieldCell *nowLabel;
+- (IBAction)nowButtonClick:(id)sender;
+- (void)updateNowLabel;
+
+
 @end
