@@ -28,4 +28,13 @@
 - (IBAction)zeroOneTwoClick:(id)sender;
 @property (weak) IBOutlet NSTextFieldCell *zeroOneTwoLabel;
 
+// Seasons
+
+@property (weak) IBOutlet NSTextFieldCell *seasonsLabel;
+- (IBAction)winterClick:(id)sender;
+- (IBAction)springClick:(id)sender;
+- (IBAction)summerClick:(id)sender;
+- (IBAction)fallClick:(id)sender;
+
+- (void)updateSeasonsLabel:(NSString *)season;
 @end

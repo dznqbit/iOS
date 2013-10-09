@@ -10,8 +10,9 @@
 
 @implementation DIZAppDelegate
 
-- (void)applicationDidFinishLaunching:(NSNotification *)aNotification
-{}
+- (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+    [self updateSeasonsLabel:@"December"];
+}
 
 // Top Label
 
@@ -44,6 +45,28 @@
     [[self zeroOneTwoLabel] setTitle:labelString];
     
     // [numberFormatter release]; ARC prevents this
+}
+
+// Seasons
+
+- (IBAction)winterClick:(id)sender {
+    [self updateSeasonsLabel:@"December"];
+}
+
+- (IBAction)springClick:(id)sender {
+    [self updateSeasonsLabel:@"March"];
+}
+
+- (IBAction)summerClick:(id)sender {
+    [self updateSeasonsLabel:@"June"];
+}
+
+- (IBAction)fallClick:(id)sender {
+    [self updateSeasonsLabel:@"September"];
+}
+
+- (void)updateSeasonsLabel:(NSString *)seasonStart {
+    [[self seasonsLabel] setTitle:seasonStart];
 }
 
 @end

@@ -749,6 +749,73 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
+                    <box autoresizesSubviews="NO" fixedFrame="YES" title="Seasons" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="Abx-T4-VU1">
+                        <rect key="frame" x="360" y="418" width="373" height="136"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <view key="contentView">
+                            <rect key="frame" x="1" y="1" width="371" height="120"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <matrix verticalHuggingPriority="750" fixedFrame="YES" allowsEmptySelection="NO" autorecalculatesCellSize="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nlp-Bp-Pde">
+                                    <rect key="frame" x="18" y="23" width="113" height="78"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                    <size key="cellSize" width="74" height="18"/>
+                                    <size key="intercellSpacing" width="4" height="2"/>
+                                    <buttonCell key="prototype" type="radio" title="Radio" imagePosition="left" alignment="left" inset="2" id="frw-0W-cwR">
+                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                        <font key="font" metaFont="system"/>
+                                        <connections>
+                                            <action selector="seasonsClick:" target="494" id="SA9-Yi-lpT"/>
+                                        </connections>
+                                    </buttonCell>
+                                    <cells>
+                                        <column>
+                                            <buttonCell type="radio" title="Winter" imagePosition="left" alignment="left" state="on" tag="1" inset="2" id="A1V-W5-8AX">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                                <connections>
+                                                    <action selector="winterClick:" target="494" id="Guj-Ug-YFG"/>
+                                                </connections>
+                                            </buttonCell>
+                                            <buttonCell type="radio" title="Spring" imagePosition="left" alignment="left" inset="2" id="qQ3-4e-7CU">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                                <connections>
+                                                    <action selector="springClick:" target="494" id="scz-jr-JsW"/>
+                                                </connections>
+                                            </buttonCell>
+                                            <buttonCell type="radio" title="Summer" imagePosition="left" alignment="left" inset="2" id="Naz-RK-ypm">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                                <connections>
+                                                    <action selector="summerClick:" target="494" id="FqW-zc-llT"/>
+                                                </connections>
+                                            </buttonCell>
+                                            <buttonCell type="radio" title="Fall" imagePosition="left" alignment="left" inset="2" id="FGD-t0-FLY">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                                <connections>
+                                                    <action selector="fallClick:" target="494" id="rgX-ip-Y9b"/>
+                                                </connections>
+                                            </buttonCell>
+                                        </column>
+                                    </cells>
+                                </matrix>
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rn1-Br-bXY">
+                                    <rect key="frame" x="122" y="54" width="227" height="17"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="EV8-hx-ZvG">
+                                        <font key="font" metaFont="system"/>
+                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                            </subviews>
+                        </view>
+                        <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                        <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </box>
                 </subviews>
             </view>
         </window>
@@ -756,6 +823,7 @@
             <connections>
                 <outlet property="goodbyeButton" destination="AlG-TS-dTn" id="msU-YR-wrz"/>
                 <outlet property="helloButton" destination="rR9-0B-Kmd" id="IdR-3R-3XY"/>
+                <outlet property="seasonsLabel" destination="EV8-hx-ZvG" id="t4h-0P-O5e"/>
                 <outlet property="topLabel" destination="vQM-Ck-eRV" id="g7I-4W-afI"/>
                 <outlet property="topLabelCopyButton" destination="LRa-vi-46F" id="mWC-rH-YmQ"/>
                 <outlet property="topLabelCopyClick" destination="Md7-bc-fne" id="eLA-9b-efU"/>
