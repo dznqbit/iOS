@@ -30,6 +30,20 @@
     }
 }
 
+- (NSString *)description {
+    return [NSString stringWithFormat:@"%@ (%.2f/hr)", [self name], [[self hourlyRate] doubleValue]];
+}
+
+- (void)dealloc {
+    [_name release];
+    _name = nil;
+    
+    [_hourlyRate release];
+    _hourlyRate = nil;
+    
+    [super dealloc];
+}
+
 // Init stuff
 
 + (DIZPerson *)personWithName:(NSString *)theName hourlyRate:(double)theRate {

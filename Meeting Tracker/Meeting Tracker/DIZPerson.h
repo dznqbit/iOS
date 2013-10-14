@@ -19,6 +19,8 @@
 - (NSNumber *)hourlyRate;
 - (void)setHourlyRate:(NSNumber *)theRate;
 
+- (NSString *)description;
+
 + (DIZPerson *)personWithName:(NSString *)theName
     hourlyRate:(double)theRate;
 

@@ -14,7 +14,11 @@
 {
     self = [super init];
     if (self) {
-        // Add your subclass-specific initialization here.
+        _meeting = [DIZMeeting meetingWithCaptains];
+        
+        for (int myIndex = 0; myIndex < [_meeting countOfPersonsPresent]; ++myIndex) {
+            NSLog(@"%@", [[_meeting personsPresent] objectAtIndex:myIndex]);
+        }
     }
     return self;
 }
