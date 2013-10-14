@@ -745,7 +745,7 @@
                         <rect key="frame" x="187" y="467" width="179" height="81"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="1: One" id="gRT-VK-Gnq">
-                            <font key="font" size="54" name="BrushScript-Regular"/>
+                            <font key="font" size="52" name="Papyrus"/>
                             <color key="textColor" red="0.25622773836155527" green="0.88262143342391308" blue="0.14546082334620428" alpha="1" colorSpace="calibratedRGB"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
