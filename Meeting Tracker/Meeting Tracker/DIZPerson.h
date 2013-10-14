@@ -11,7 +11,7 @@
 @interface DIZPerson : NSObject
 {
     NSString *_name;
-    NSString *_hourlyRate;
+    NSNumber *_hourlyRate;
 }
 
 - (NSString *)name;
@@ -19,7 +19,7 @@
 - (NSNumber *)hourlyRate;
 - (void)setHourlyRate:(NSNumber *)theRate;
 
-+ personWithName:(NSString *)theName
++ (DIZPerson *)personWithName:(NSString *)theName
     hourlyRate:(double)theRate;
 
 - (id)initWithName:(NSString *)theName hourlyRate:(double)theRate;
