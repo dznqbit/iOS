@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface DIZPerson : NSObject
+@interface Person : NSObject
 {
     NSString *_name;
     NSNumber *_hourlyRate;
@@ -16,14 +16,13 @@
 
 - (NSString *)name;
 - (void)setName:(NSString *)theName;
+- (NSString *)description;
 - (NSNumber *)hourlyRate;
 - (void)setHourlyRate:(NSNumber *)theRate;
 
-- (NSString *)description;
++ (Person *)personWithName:(NSString *)theName
+    hourlyRate:(NSNumber *)theRate;
 
-+ (DIZPerson *)personWithName:(NSString *)theName
-    hourlyRate:(double)theRate;
-
-- (id)initWithName:(NSString *)theName hourlyRate:(double)theRate;
+- (id)initWithName:(NSString *)theName hourlyRate:(NSNumber *)theRate;
 
 @end

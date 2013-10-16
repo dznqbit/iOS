@@ -8,13 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
-@interface DIZMeeting : NSObject
+@interface Meeting : NSObject
 {
     NSDate *_startingTime;
     NSDate *_endingTime;
     
     NSMutableArray *_personsPresent;
 }
+
+- (NSString *)description;
 
 - (NSDate *)startingTime;
 - (void)setStartingTime:(NSDate *)theStartingTime;
@@ -37,8 +39,8 @@
 - (NSNumber *)accruedCost;
 - (NSNumber *)totalBillingRate;
 
-+ (DIZMeeting *)meetingWithStooges;
-+ (DIZMeeting *)meetingWithCaptains;
-+ (DIZMeeting *)meetingWithMarxBrothers;
++ (Meeting *)meetingWithStooges;
++ (Meeting *)meetingWithCaptains;
++ (Meeting *)meetingWithMarxBrothers;
 
 @end

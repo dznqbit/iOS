@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 Quinton Harris. All rights reserved.
 //
 
-#import "DIZPerson.h"
+#import "Person.h"
 
-@implementation DIZPerson
+@implementation Person
 
 // Set / Get
 
@@ -16,8 +16,8 @@
 - (void)setName:(NSString *)theName {
     if (theName != _name) {
         [_name release];
-        [theName retain];
-        _name = theName;
+        _name = [NSString stringWithString:theName];
+        [_name retain];
     }
 }
 
@@ -31,7 +31,7 @@
 }
 
 - (NSString *)description {
-    return [NSString stringWithFormat:@"%@ (%.2f/hr)", [self name], [[self hourlyRate] doubleValue]];
+    return [NSString stringWithFormat:@"<Person %@ %.2f/hour>", [self name], [[self hourlyRate] doubleValue]];
 }
 
 - (void)dealloc {
@@ -46,16 +46,16 @@
 
 // Init stuff
 
-+ (DIZPerson *)personWithName:(NSString *)theName hourlyRate:(double)theRate {
-    DIZPerson *person = [[DIZPerson alloc] initWithName:theName hourlyRate:theRate];
++ (Person *)personWithName:(NSString *)theName hourlyRate:(NSNumber *)theRate {
+    Person *person = [[Person alloc] initWithName:theName hourlyRate:theRate];
     [person autorelease];
     return person;
 }
 
-- (id)initWithName:(NSString *)theName hourlyRate:(double)theRate {
+- (id)initWithName:(NSString *)theName hourlyRate:(NSNumber *)theRate {
     if (self = [super init]) {
         _name = [theName retain];
-        _hourlyRate = [[NSNumber numberWithDouble:theRate] retain];
+        _hourlyRate = [theRate retain];
     }
     
     return self;

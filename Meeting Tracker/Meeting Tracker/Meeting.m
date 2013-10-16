@@ -6,10 +6,10 @@
 //  Copyright (c) 2013 Quinton Harris. All rights reserved.
 //
 
-#import "DIZMeeting.h"
-#import "DIZPerson.h"
+#import "Meeting.h"
+#import "Person.h"
 
-@implementation DIZMeeting
+@implementation Meeting
 
 // Start & Stop Set/Get
 
@@ -31,6 +31,10 @@
     }
 }
 
+- (NSString *)description {
+    return [NSString stringWithFormat:@"<Meeting %lu participants %@/hour>", [self countOfPersonsPresent], [self totalBillingRate]];
+}
+
 // Persons Present
 
 - (NSMutableArray *)personsPresent { return _personsPresent; }
@@ -44,19 +48,19 @@
 
 - (void)addToPersonsPresent:(id)thePerson {
     // TODO: do we need to prevent double-addition?
-    [thePerson retain];
+    // [thePerson retain];
     [[self personsPresent] addObject:thePerson];
 }
 
 - (void)removeFromPersonsPresent:(id)thePerson {
     [[self personsPresent] removeObject:thePerson];
-    [thePerson release];
+    // [thePerson release];
 }
 
 - (void)removeObjectFromPersonsPresentAtIndex:(NSUInteger)index {
-    DIZPerson *person = [[self personsPresent] objectAtIndex:index];
+    // Person *person = [[self personsPresent] objectAtIndex:index];
     [[self personsPresent] removeObjectAtIndex:index];
-    [person release];
+    // [person release];
 }
 
 - (void)insertObject:(id)theObject inPersonsPresentAtIndex:(NSUInteger)index {
@@ -69,19 +73,11 @@
 }
 
 - (NSUInteger)elapsedSeconds {
-    NSDate *currentTime = [NSDate date];
-    NSTimeInterval elapsedTime = [currentTime compare:[self startingTime]];
-    
-    [currentTime release];
-    return (NSUInteger)[NSNumber numberWithDouble:elapsedTime]; // TODO: is the casting shitty?
+    return (NSUInteger)[[self endingTime] timeIntervalSinceDate:[self startingTime]];
 }
 
 - (double)elapsedHours {
-    NSDate *currentTime = [NSDate date];
-    NSTimeInterval elapsedTime = [currentTime compare:[self startingTime]];
-
-    [currentTime release];
-    return elapsedTime / 3600.00;
+    return (double)[self elapsedSeconds] / 3600.00;
 }
 
 - (NSString *)elapsedTimeDisplayString {
@@ -95,7 +91,7 @@
 - (NSNumber *)totalBillingRate {
     double billingRate = 0.00;
     
-    for (DIZPerson *person in [self personsPresent]) {
+    for (Person *person in [self personsPresent]) {
         billingRate += [[person hourlyRate] doubleValue];
     }
     
@@ -123,57 +119,55 @@
     return self;
 }
 
-+ (DIZMeeting *)meetingWithCaptains {
-    DIZMeeting *meeting = [[DIZMeeting alloc] init];
++ (Meeting *)meetingWithCaptains {
+    Meeting *meeting = [[Meeting alloc] init];
 
     NSArray *captains = @[
-        [[DIZPerson alloc] initWithName: @"Sean Archer" hourlyRate: 0.01],
-        [[DIZPerson alloc] initWithName: @"Katherine Janeway" hourlyRate: 20.00],
-        [[DIZPerson alloc] initWithName: @"Benjamin Sisko" hourlyRate: 40.00],
-        [[DIZPerson alloc] initWithName: @"Jean-Luc Picard" hourlyRate: 100.00],
-        [[DIZPerson alloc] initWithName: @"James T Kirk" hourlyRate: 200.00]
+        [Person personWithName:@"Sean Archer" hourlyRate:@0.01],
+        [Person personWithName: @"Katherine Janeway" hourlyRate: @20.00],
+        [Person personWithName: @"Benjamin Sisko" hourlyRate: @40.00],
+        [Person personWithName: @"Jean-Luc Picard" hourlyRate: @100.00],
+        [Person personWithName: @"James T Kirk" hourlyRate: @200.00]
     ];
 
-    for (DIZPerson *captain in captains) {
+    for (Person *captain in captains) {
         [meeting addToPersonsPresent:captain];
-        [captain release];
     }
 
     [meeting autorelease];
     return meeting;
 }
 
-+ (DIZMeeting *)meetingWithMarxBrothers {
-    DIZMeeting *meeting = [[DIZMeeting alloc] init];
++ (Meeting *)meetingWithMarxBrothers {
+    Meeting *meeting = [[Meeting alloc] init];
     
     NSArray *brothers = @[
-        [[DIZPerson alloc] initWithName: @"Larry Marx" hourlyRate: 0.01],
-        [[DIZPerson alloc] initWithName: @"Al Marx" hourlyRate: 20.00],
-        [[DIZPerson alloc] initWithName: @"Joe Marx" hourlyRate: 40.00]
+        [Person personWithName: @"Larry Marx" hourlyRate: @0.01],
+        [Person personWithName: @"Al Marx" hourlyRate: @20.00],
+        [Person personWithName: @"Joe Marx" hourlyRate: @40.00]
     ];
     
-    for (DIZPerson *brother in brothers) {
+    for (Person *brother in brothers) {
         [meeting addToPersonsPresent:brother];
-        [brother release];
     }
     
     [meeting autorelease];
     return meeting;
 }
 
-+ (DIZMeeting *)meetingWithStooges {
-    DIZMeeting *meeting = [[DIZMeeting alloc] init];
++ (Meeting *)meetingWithStooges {
+    Meeting *meeting = [[Meeting alloc] init];
     
     NSArray *stooges = @[
-        [[DIZPerson alloc] initWithName: @"Larry" hourlyRate: 1.50],
-        [[DIZPerson alloc] initWithName: @"Curly" hourlyRate: 1.00],
-        [[DIZPerson alloc] initWithName: @"Moe" hourlyRate: 20.00]
+        [Person personWithName: @"Larry" hourlyRate: @1.50],
+        [Person personWithName: @"Curly" hourlyRate: @1.00],
+        [Person personWithName: @"Moe" hourlyRate: @20.00]
     ];
     
-    for (DIZPerson *stooge in stooges) {
+    for (Person *stooge in stooges) {
         [meeting addToPersonsPresent:stooge];
-        [stooge release];
     }
+    
     [meeting autorelease];
     return meeting;
 }
