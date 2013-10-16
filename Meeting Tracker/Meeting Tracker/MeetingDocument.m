@@ -61,7 +61,7 @@
 }
 
 - (void)windowWillClose:(NSNotification *)notification {
-    
+    [[self timer] invalidate];
 }
 
 - (Meeting *)meeting { return _meeting; }
