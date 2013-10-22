@@ -19,6 +19,16 @@
     return self;
 }
 
+- (void)dealloc {
+    [_meeting release];
+    
+    if (_timer != nil) {
+        [_timer release];
+    }
+    
+    [super dealloc];
+}
+
 - (NSString *)windowNibName
 {
     // Override returning the nib file name of the document
