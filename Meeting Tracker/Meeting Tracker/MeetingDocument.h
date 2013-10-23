@@ -28,6 +28,8 @@
 - (NSString *)elapsedTimeString;
 - (NSNumber *)accruedCost;
 
+- (NSMutableArray *)personsPresent;
+
 - (IBAction)pressedStartMeeting:(id)sender;
 - (IBAction)pressedEndMeeting:(id)sender;
 - (IBAction)pressedAddPerson:(id)sender;

@@ -13,9 +13,10 @@
 - (id)init
 {
     if (self = [super init]) {
+//        _meeting = [[Meeting alloc] init];
         _meeting = [[Meeting meetingWithCaptains] retain];
     }
-    
+ 
     return self;
 }
 
@@ -134,13 +135,16 @@
     [self didChangeValueForKey:@"meetingActive"];
 }
 
+- (NSMutableArray *)personsPresent {
+    return [[self meeting] personsPresent];
+}
+
 - (IBAction)pressedAddPerson:(id)sender {
+    Person *newPerson = [Person personWithName:@"Jim" hourlyRate:@50.00];
+    [[self meeting] addToPersonsPresent:newPerson];
 }
 
 - (IBAction)pressedRemovePerson:(id)sender {
-}
-
-- (IBAction)pressedStopMeeting:(id)sender {
 }
 
 - (void)updateGUI:(NSTimer *)theTimer {
