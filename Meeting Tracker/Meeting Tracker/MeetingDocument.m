@@ -135,20 +135,16 @@
     [self didChangeValueForKey:@"meetingActive"];
 }
 
+- (void)setPersonsPresent:(NSMutableArray *)thePersonsPresent {
+    [[self meeting] setPersonsPresent:thePersonsPresent];
+}
+
 - (NSMutableArray *)personsPresent {
     return [[self meeting] personsPresent];
 }
 
-- (IBAction)pressedAddPerson:(id)sender {
-    Person *newPerson = [Person personWithName:@"Jim" hourlyRate:@50.00];
-    [[self meeting] addToPersonsPresent:newPerson];
-}
-
-- (IBAction)pressedRemovePerson:(id)sender {
-}
-
 - (void)updateGUI:(NSTimer *)theTimer {
-    for (NSString *key in @[@"elapsedTimeString", @"currentTimeString"]) {
+    for (NSString *key in @[@"accruedCost", @"elapsedTimeString", @"currentTimeString"]) {
         [self willChangeValueForKey:key];
         [self didChangeValueForKey:key];
     }

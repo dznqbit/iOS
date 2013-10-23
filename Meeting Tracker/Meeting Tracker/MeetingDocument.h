@@ -28,12 +28,11 @@
 - (NSString *)elapsedTimeString;
 - (NSNumber *)accruedCost;
 
+- (void)setPersonsPresent:(NSMutableArray *)thePersonsPresent;
 - (NSMutableArray *)personsPresent;
 
 - (IBAction)pressedStartMeeting:(id)sender;
 - (IBAction)pressedEndMeeting:(id)sender;
-- (IBAction)pressedAddPerson:(id)sender;
-- (IBAction)pressedRemovePerson:(id)sender;
 
 - (void)updateGUI:(NSTimer *)theTimer;
 

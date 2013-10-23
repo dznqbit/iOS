@@ -52,6 +52,15 @@
     return person;
 }
 
+- (id)init {
+    if (self = [super init]) {
+        _name = [@"Joe" retain];
+        _hourlyRate = [@50.00 retain];
+    }
+    
+    return self;
+}
+
 - (id)initWithName:(NSString *)theName hourlyRate:(NSNumber *)theRate {
     if (self = [super init]) {
         _name = [theName retain];
