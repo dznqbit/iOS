@@ -21,6 +21,9 @@
 - (NSTimer *)timer;
 - (void)setTimer:(NSTimer *)theTimer;
 
+// UI stuff
+- (NSString *)elapsedTimeString;
+
 - (IBAction)pressedStartMeeting:(id)sender;
 - (IBAction)pressedEndMeeting:(id)sender;
 - (IBAction)pressedAddPerson:(id)sender;

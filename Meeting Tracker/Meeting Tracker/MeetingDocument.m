@@ -92,6 +92,10 @@
     }
 }
 
+- (NSString *)elapsedTimeString {
+    return @"hello";
+}
+
 - (IBAction)pressedStartMeeting:(id)sender {
     [[self meeting] setStartingTime: [NSDate date]];
 }

@@ -81,7 +81,12 @@
 }
 
 - (NSString *)elapsedTimeDisplayString {
-    return @"TODO";
+    NSUInteger elapsedSeconds = [self elapsedSeconds];
+    return [NSString stringWithFormat:@"%02ld:%02ld:%02ld",
+            elapsedSeconds / 3600,
+            (elapsedSeconds / 60) % 60,
+            elapsedSeconds % 60
+    ];
 }
 
 - (NSNumber *)accruedCost {
