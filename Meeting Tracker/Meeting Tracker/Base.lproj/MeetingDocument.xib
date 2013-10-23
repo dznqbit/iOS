@@ -11,6 +11,7 @@
                 <outlet property="elapsedTimeLabel" destination="Zwc-jC-kvl" id="5xF-iV-M1a"/>
                 <outlet property="endMeetingButton" destination="xI5-td-Dzh" id="TOz-DC-Jki"/>
                 <outlet property="meetingStartLabel" destination="qde-Ih-Sn4" id="Lo1-AM-6kc"/>
+                <outlet property="participantsTable" destination="Thd-sC-SVz" id="VQS-qw-PEH"/>
                 <outlet property="pressedStartMeeting" destination="ghf-4b-tkn" id="5hZ-A8-d1m"/>
                 <outlet property="startMeetingButton" destination="WuI-ZP-aZr" id="awy-Xd-RCk"/>
                 <outlet property="window" destination="5" id="18"/>

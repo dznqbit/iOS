@@ -31,6 +31,8 @@
 - (void)removeObjectFromPersonsPresentAtIndex:(NSUInteger)index;
 - (void)insertObject:(id)theObject inPersonsPresentAtIndex:(NSUInteger)index;
 
+- (void)encodeWithCoder:(NSCoder *)coder;
+
 - (NSUInteger)countOfPersonsPresent;
 - (NSUInteger)elapsedSeconds;
 - (double)elapsedHours;
@@ -41,6 +43,9 @@
 
 - (NSNumber *)accruedCost;
 - (NSNumber *)totalBillingRate;
+
+- (void)encodeWithCoder:(NSCoder *)coder;
+- (id)initWithCoder:(NSCoder *)coder;
 
 + (Meeting *)meetingWithStooges;
 + (Meeting *)meetingWithCaptains;

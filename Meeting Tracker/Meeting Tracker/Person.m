@@ -34,6 +34,11 @@
     return [NSString stringWithFormat:@"<Person %@ %.2f/hour>", [self name], [[self hourlyRate] doubleValue]];
 }
 
+- (void)encodeWithCoder:(NSCoder *)coder {
+    [coder encodeObject:[self name] forKey:@"name"];
+    [coder encodeDouble:[[self hourlyRate] doubleValue] forKey:@"hourlyRate"];
+}
+
 - (void)dealloc {
     [_name release];
     _name = nil;
@@ -61,6 +66,14 @@
     return self;
 }
 
+- (id)initWithCoder:(NSCoder *)coder {
+    if (self = [super init]) {
+        _name       = [[coder decodeObjectForKey:@"name"] retain];
+        _hourlyRate = [[NSNumber numberWithDouble:[coder decodeDoubleForKey:@"hourlyRate"]] retain];
+    }
+    
+    return self;
+}
 - (id)initWithName:(NSString *)theName hourlyRate:(NSNumber *)theRate {
     if (self = [super init]) {
         _name = [theName retain];

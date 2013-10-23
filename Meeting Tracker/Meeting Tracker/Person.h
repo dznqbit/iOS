@@ -20,9 +20,12 @@
 - (NSNumber *)hourlyRate;
 - (void)setHourlyRate:(NSNumber *)theRate;
 
+- (void)encodeWithCoder:(NSCoder *)coder;
+
 + (Person *)personWithName:(NSString *)theName
     hourlyRate:(NSNumber *)theRate;
 
+- (id)initWithCoder:(NSCoder *)coder;
 - (id)initWithName:(NSString *)theName hourlyRate:(NSNumber *)theRate;
 
 @end

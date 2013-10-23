@@ -42,6 +42,8 @@
 @property (assign) IBOutlet NSTextField *currentTimeLabel;
 @property (assign) IBOutlet NSTextField *meetingStartLabel;
 
+@property (assign) IBOutlet NSScrollView *participantsTable;
+
 - (IBAction)pressedLogMeeting:(id)sender;
 - (IBAction)pressedLogParticipants:(id)sender;
 

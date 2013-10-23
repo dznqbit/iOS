@@ -109,6 +109,20 @@
     return [NSNumber numberWithDouble:billingRate];
 }
 
+- (BOOL)meetingStarted {
+    return [self startingTime] != nil;
+}
+
+- (BOOL)meetingEnded {
+    return [self meetingStarted] && [self endingTime] != nil;
+}
+
+- (void)encodeWithCoder:(NSCoder *)coder {
+    [coder encodeObject:[self startingTime] forKey:@"startingTime"];
+    [coder encodeObject:[self endingTime] forKey:@"endingTime"];
+    [coder encodeObject:[self personsPresent] forKey:@"personsPresent"];
+}
+
 - (void)dealloc {
     [_startingTime release];
     _startingTime = nil;
@@ -130,12 +144,14 @@
     return self;
 }
 
-- (BOOL)meetingStarted {
-    return [self startingTime] != nil;
-}
-
-- (BOOL)meetingEnded {
-    return [self meetingStarted] && [self endingTime] != nil;
+- (id)initWithCoder:(NSCoder *)coder {
+    if (self = [super init]) {
+        _startingTime   = [[coder decodeObjectForKey:@"startingTime"] retain];
+        _endingTime     = [[coder decodeObjectForKey:@"endingTime"] retain];
+        _personsPresent = [[coder decodeObjectForKey:@"personsPresent"] retain];
+    }
+    
+    return self;
 }
 
 + (Meeting *)meetingWithCaptains {
