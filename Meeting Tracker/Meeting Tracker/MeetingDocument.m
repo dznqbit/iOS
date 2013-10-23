@@ -92,6 +92,23 @@
     }
 }
 
+- (IBAction)pressedStartMeeting:(id)sender {
+    [[self meeting] setStartingTime: [NSDate date]];
+}
+
+- (IBAction)pressedEndMeeting:(id)sender {
+    [[self meeting] setEndingTime: [NSDate date]];
+}
+
+- (IBAction)pressedAddPerson:(id)sender {
+}
+
+- (IBAction)pressedRemovePerson:(id)sender {
+}
+
+- (IBAction)pressedStopMeeting:(id)sender {
+}
+
 - (void)updateGUI:(NSTimer *)theTimer {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"dd/MM/yyyy, HH:mm:ss a"];

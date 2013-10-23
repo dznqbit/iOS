@@ -21,9 +21,18 @@
 - (NSTimer *)timer;
 - (void)setTimer:(NSTimer *)theTimer;
 
+- (IBAction)pressedStartMeeting:(id)sender;
+- (IBAction)pressedEndMeeting:(id)sender;
+- (IBAction)pressedAddPerson:(id)sender;
+- (IBAction)pressedRemovePerson:(id)sender;
+
 - (void)updateGUI:(NSTimer *)theTimer;
 
+@property (assign) IBOutlet NSButtonCell *startMeetingButton;
+@property (assign) IBOutlet NSButton *endMeetingButton;
+
 @property (assign) IBOutlet NSTextField *currentTimeLabel;
+@property (assign) IBOutlet NSTextField *meetingStartLabel;
 
 - (IBAction)pressedLogMeeting:(id)sender;
 - (IBAction)pressedLogParticipants:(id)sender;
