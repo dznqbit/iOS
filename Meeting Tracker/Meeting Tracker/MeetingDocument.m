@@ -112,6 +112,10 @@
     return [[self meeting] elapsedTimeDisplayString];
 }
 
+- (NSNumber *)accruedCost {
+    return [[self meeting] accruedCost];
+}
+
 - (IBAction)pressedStartMeeting:(id)sender {
     [self willChangeValueForKey:@"meetingNotStarted"];
     [self willChangeValueForKey:@"meetingActive"];

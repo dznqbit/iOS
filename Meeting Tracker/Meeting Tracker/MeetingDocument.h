@@ -26,6 +26,7 @@
 - (BOOL)meetingActive;
 - (NSString *)currentTimeString;
 - (NSString *)elapsedTimeString;
+- (NSNumber *)accruedCost;
 
 - (IBAction)pressedStartMeeting:(id)sender;
 - (IBAction)pressedEndMeeting:(id)sender;
