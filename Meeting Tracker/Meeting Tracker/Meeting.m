@@ -73,7 +73,13 @@
 }
 
 - (NSUInteger)elapsedSeconds {
-    return (NSUInteger)[[self endingTime] timeIntervalSinceDate:[self startingTime]];
+    if ([self meetingStarted]) {
+        NSDate *comparisonDate = [self endingTime] != nil ? [self endingTime] : [NSDate date];
+        return (NSUInteger)[comparisonDate timeIntervalSinceDate:[self startingTime]];
+    }
+    else {
+        return 0;
+    }
 }
 
 - (double)elapsedHours {
@@ -122,6 +128,14 @@
     }
     
     return self;
+}
+
+- (BOOL)meetingStarted {
+    return [self startingTime] != nil;
+}
+
+- (BOOL)meetingEnded {
+    return [self meetingStarted] && [self endingTime] != nil;
 }
 
 + (Meeting *)meetingWithCaptains {

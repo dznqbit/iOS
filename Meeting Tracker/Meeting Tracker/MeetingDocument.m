@@ -41,7 +41,7 @@
     [super windowControllerDidLoadNib:aController];
     [self updateGUI:nil];
 
-    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:1
+    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:0.2
                                                      target:self
                                                     selector:@selector(updateGUI:)
                                                    userInfo:nil
@@ -93,14 +93,23 @@
 }
 
 - (BOOL)meetingNotStarted {
-    return [[self meeting] startingTime] == nil;
+    return ![[self meeting] meetingStarted];
 }
 
 - (BOOL)meetingActive {
-    return  [[self meeting] startingTime] != nil && [[self meeting] endingTime] == nil;
+    return [[self meeting] meetingStarted] && ![[self meeting] meetingEnded];
 }
+
+- (NSString *)currentTimeString {
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"dd/MM/yyyy, HH:mm:ss a"];
+    [dateFormatter autorelease];
+    
+    return [dateFormatter stringFromDate:[NSDate date]];
+}
+
 - (NSString *)elapsedTimeString {
-    return @"hello";
+    return [[self meeting] elapsedTimeDisplayString];
 }
 
 - (IBAction)pressedStartMeeting:(id)sender {
@@ -131,10 +140,10 @@
 }
 
 - (void)updateGUI:(NSTimer *)theTimer {
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"dd/MM/yyyy, HH:mm:ss a"];
-    [[self currentTimeLabel] setStringValue:[dateFormatter stringFromDate:[NSDate date]]];
-    [dateFormatter release];
+    for (NSString *key in @[@"elapsedTimeString", @"currentTimeString"]) {
+        [self willChangeValueForKey:key];
+        [self didChangeValueForKey:key];
+    }
 }
 
 - (IBAction)pressedLogMeeting:(id)sender {

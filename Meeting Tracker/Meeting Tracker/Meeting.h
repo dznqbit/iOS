@@ -36,6 +36,9 @@
 - (double)elapsedHours;
 - (NSString *)elapsedTimeDisplayString;
 
+- (BOOL)meetingStarted;
+- (BOOL)meetingEnded;
+
 - (NSNumber *)accruedCost;
 - (NSNumber *)totalBillingRate;
 

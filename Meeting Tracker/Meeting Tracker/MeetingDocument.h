@@ -24,6 +24,7 @@
 // UI stuff
 - (BOOL)meetingNotStarted;
 - (BOOL)meetingActive;
+- (NSString *)currentTimeString;
 - (NSString *)elapsedTimeString;
 
 - (IBAction)pressedStartMeeting:(id)sender;
