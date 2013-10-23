@@ -67,6 +67,7 @@
                         </buttonCell>
                         <connections>
                             <action selector="pressedStartMeeting:" target="-2" id="9LB-mC-yAv"/>
+                            <binding destination="-2" name="enabled" keyPath="self.meetingNotStarted" id="Yvz-ty-wKt"/>
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xI5-td-Dzh">
@@ -78,6 +79,7 @@
                         </buttonCell>
                         <connections>
                             <action selector="pressedEndMeeting:" target="-2" id="ku8-up-dmd"/>
+                            <binding destination="-2" name="enabled" keyPath="self.meetingActive" id="b1G-9g-xR6"/>
                         </connections>
                     </button>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="knO-zd-OHb">

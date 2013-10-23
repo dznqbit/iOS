@@ -22,6 +22,8 @@
 - (void)setTimer:(NSTimer *)theTimer;
 
 // UI stuff
+- (BOOL)meetingNotStarted;
+- (BOOL)meetingActive;
 - (NSString *)elapsedTimeString;
 
 - (IBAction)pressedStartMeeting:(id)sender;

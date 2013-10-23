@@ -92,16 +92,33 @@
     }
 }
 
+- (BOOL)meetingNotStarted {
+    return [[self meeting] startingTime] == nil;
+}
+
+- (BOOL)meetingActive {
+    return  [[self meeting] startingTime] != nil && [[self meeting] endingTime] == nil;
+}
 - (NSString *)elapsedTimeString {
     return @"hello";
 }
 
 - (IBAction)pressedStartMeeting:(id)sender {
+    [self willChangeValueForKey:@"meetingNotStarted"];
+    [self willChangeValueForKey:@"meetingActive"];
+    
     [[self meeting] setStartingTime: [NSDate date]];
+    
+    [self didChangeValueForKey:@"meetingNotStarted"];
+    [self didChangeValueForKey:@"meetingActive"];
 }
 
 - (IBAction)pressedEndMeeting:(id)sender {
+    [self willChangeValueForKey:@"meetingActive"];
+    
     [[self meeting] setEndingTime: [NSDate date]];
+    
+    [self didChangeValueForKey:@"meetingActive"];
 }
 
 - (IBAction)pressedAddPerson:(id)sender {
