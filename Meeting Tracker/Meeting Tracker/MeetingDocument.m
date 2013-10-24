@@ -157,6 +157,9 @@
         [self willChangeValueForKey:key];
         [self didChangeValueForKey:key];
     }
+  
+    NSLog(@"total billing rate %@", [[self meeting] totalBillingRate]);
+    [[self billingRateTargetActionLabel] setObjectValue:[[self meeting] totalBillingRate]];
 }
 
 - (IBAction)pressedLogMeeting:(id)sender {
