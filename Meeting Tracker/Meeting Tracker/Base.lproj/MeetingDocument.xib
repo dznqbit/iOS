@@ -181,7 +181,7 @@
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1bv-Rx-csj">
                         <rect key="frame" x="592" y="311" width="91" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="0.00" id="Ea9-qt-dVV">
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="TODO" id="Ea9-qt-dVV">
                             <numberFormatter key="formatter" formatterBehavior="default10_4" positiveFormat="¤#,##0.00" negativeFormat="(¤#,##0.00)" numberStyle="currency" minimumIntegerDigits="1" maximumIntegerDigits="309" minimumFractionDigits="2" maximumFractionDigits="2" positivePrefix="$" negativePrefix="($" negativeSuffix=")" id="gMr-M5-84U">
                                 <real key="roundingIncrement" value="0.0"/>
                                 <metadata>
@@ -308,9 +308,9 @@ CA
                         </connections>
                     </button>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2wG-8v-xaa">
-                        <rect key="frame" x="256" y="329" width="334" height="17"/>
+                        <rect key="frame" x="296" y="329" width="294" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Total billing rate (binding to Meeting, live compute):" id="WiR-pp-dYJ">
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Total billing rate (target-action live compute):" id="WiR-pp-dYJ">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
