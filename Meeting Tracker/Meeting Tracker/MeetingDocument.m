@@ -157,8 +157,9 @@
         [self willChangeValueForKey:key];
         [self didChangeValueForKey:key];
     }
-  
-    NSLog(@"total billing rate %@", [[self meeting] totalBillingRate]);
+
+    [[self billingRateLiveComputeLabel] setObjectValue:[[self personsPresent] valueForKeyPath:@"@sum.hourlyRate"]];
+
     [[self billingRateTargetActionLabel] setObjectValue:[[self meeting] totalBillingRate]];
 }
 

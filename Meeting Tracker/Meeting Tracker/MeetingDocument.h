@@ -42,6 +42,7 @@
 @property (assign) IBOutlet NSTextField *currentTimeLabel;
 @property (assign) IBOutlet NSTextField *meetingStartLabel;
 
+@property (assign) IBOutlet NSTextField *billingRateLiveComputeLabel;
 @property (assign) IBOutlet NSTextField *billingRateTargetActionLabel;
 
 @property (assign) IBOutlet NSScrollView *participantsTable;
