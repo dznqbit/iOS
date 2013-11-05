@@ -248,7 +248,7 @@
                                                 <color key="backgroundColor" white="0.33333298560000002" alpha="1" colorSpace="calibratedWhite"/>
                                             </tableHeaderCell>
                                             <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="rqT-Qj-yHb">
-                                                <numberFormatter key="formatter" formatterBehavior="default10_4" positiveFormat="¤#,##0.00" negativeFormat="(¤#,##0.00)" numberStyle="currency" minimumIntegerDigits="1" maximumIntegerDigits="309" minimumFractionDigits="2" maximumFractionDigits="2" positivePrefix="$" negativePrefix="($" negativeSuffix=")" id="Lme-M0-uI2">
+                                                <numberFormatter key="formatter" formatterBehavior="default10_4" positiveFormat="¤#,##0.00" negativeFormat="(¤#,##0.00)" numberStyle="currency" lenient="YES" minimumIntegerDigits="1" maximumIntegerDigits="309" minimumFractionDigits="2" maximumFractionDigits="2" positivePrefix="$" negativePrefix="($" negativeSuffix=")" id="Lme-M0-uI2">
                                                     <real key="roundingIncrement" value="0.0"/>
                                                     <metadata>
                                                         <bool key="localizesFormat" value="YES"/>
