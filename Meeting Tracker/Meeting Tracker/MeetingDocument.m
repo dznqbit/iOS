@@ -13,8 +13,7 @@
 - (id)init
 {
     if (self = [super init]) {
-//        _meeting = [[Meeting alloc] init];
-        _meeting = [[Meeting meetingWithCaptains] retain];
+        _meeting = [[Meeting alloc] init];
     }
  
     return self;
