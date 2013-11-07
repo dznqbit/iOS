@@ -125,6 +125,30 @@
     return [[self meeting] accruedCost];
 }
 
+- (void)resetMeetingWithMeeting:(Meeting *)meeting {
+    [self willChangeValueForKey:@"meetingNotStarted"];
+    [self willChangeValueForKey:@"meetingActive"];
+    [self willChangeValueForKey:@"personsPresent"];
+
+    [self setMeeting: meeting];
+
+    [self didChangeValueForKey:@"personsPresent"];
+    [self didChangeValueForKey:@"meetingActive"];
+    [self didChangeValueForKey:@"meetingNotStarted"];
+}
+
+- (void)resetMeetingWithCaptains:(id)sender {
+    [self resetMeetingWithMeeting:[Meeting meetingWithCaptains]];
+}
+
+- (void)resetMeetingWithMarxBrothers:(id)sender {
+    [self resetMeetingWithMeeting:[Meeting meetingWithMarxBrothers]];
+}
+
+- (void)resetMeetingWithStooges:(id)sender {
+    [self resetMeetingWithMeeting:[Meeting meetingWithStooges]];
+}
+
 - (IBAction)pressedStartMeeting:(id)sender {
     [self willChangeValueForKey:@"meetingNotStarted"];
     [self willChangeValueForKey:@"meetingActive"];
@@ -158,8 +182,19 @@
     }
 
     [[self billingRateLiveComputeLabel] setObjectValue:[[self personsPresent] valueForKeyPath:@"@sum.hourlyRate"]];
-
     [[self billingRateTargetActionLabel] setObjectValue:[[self meeting] totalBillingRate]];
+}
+
+- (BOOL)validateMenuItem:(NSMenuItem *)menuItem {
+    if ([menuItem action] == @selector(pressedStartMeeting:)) {
+        return self.meetingNotStarted;
+    }
+    
+    if ([menuItem action] == @selector(pressedEndMeeting:)) {
+        return self.meetingActive;
+    }
+
+    return true;
 }
 
 - (IBAction)pressedLogMeeting:(id)sender {

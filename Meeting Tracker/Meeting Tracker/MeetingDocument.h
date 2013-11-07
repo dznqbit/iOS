@@ -33,8 +33,12 @@
 
 - (IBAction)pressedStartMeeting:(id)sender;
 - (IBAction)pressedEndMeeting:(id)sender;
+- (IBAction)resetMeetingWithCaptains:(id)sender;
+- (IBAction)resetMeetingWithMarxBrothers:(id)sender;
+- (IBAction)resetMeetingWithStooges:(id)sender;
 
 - (void)updateGUI:(NSTimer *)theTimer;
+
 
 @property (assign) IBOutlet NSButtonCell *startMeetingButton;
 @property (assign) IBOutlet NSButton *endMeetingButton;

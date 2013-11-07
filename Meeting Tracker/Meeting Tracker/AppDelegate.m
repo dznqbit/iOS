@@ -33,4 +33,7 @@
     [self.preferencesWindowController window];
 }
 
+- (void)startMeeting:(id)sender {
+}
+
 @end

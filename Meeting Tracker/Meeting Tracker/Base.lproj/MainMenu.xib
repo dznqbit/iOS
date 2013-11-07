@@ -127,6 +127,43 @@
                         </items>
                     </menu>
                 </menuItem>
+                <menuItem title="Meeting" id="sXP-eA-zPs">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="Meeting" id="Zhf-bx-m5T">
+                        <items>
+                            <menuItem title="Start Meeting" id="CrJ-1R-gFW">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="pressedStartMeeting:" target="-1" id="9Vq-7v-Bdg"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Stop Meeting" id="z0B-K0-1J3">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="pressedEndMeeting:" target="-1" id="cPt-sO-TKW"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Reset With Captains" id="H4C-4V-dnO">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="resetMeetingWithCaptains:" target="-1" id="EXZ-Ii-Lsr"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Reset With Marx Brothers" id="gwp-A4-RF5">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="resetMeetingWithMarxBrothers:" target="-1" id="HGn-HZ-ZHL"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Reset With Stooges" id="UWa-jE-lFN">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="resetMeetingWithStooges:" target="-1" id="SOp-3N-lX0"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
                 <menuItem title="Edit" id="217">
                     <menu key="submenu" title="Edit" id="205">
                         <items>
