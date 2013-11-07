@@ -19,13 +19,14 @@
 
 + (void)registerStandardDefaults {
     NSMutableDictionary *defaultValues = [NSMutableDictionary dictionary];
-//    defaultValues[];
-//    defaultValues[];
+    defaultValues[@"personName"] =  @"diz";
+    defaultValues[@"personHourlyRate"] = @10.;
+    
+    [[NSUserDefaults standardUserDefaults] registerDefaults:defaultValues];
 }
 
 - (IBAction)showPreferencesPanel:(id)sender {
     if (!self.preferencesWindowController) {
-    NSLog(@"create");
         self.preferencesWindowController = [[[PreferencesWindowController alloc] init] autorelease];
     }
     

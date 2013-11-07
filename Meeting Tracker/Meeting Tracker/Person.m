@@ -59,10 +59,10 @@
 
 - (id)init {
     if (self = [super init]) {
-        _name = [@"Joe" retain];
-        _hourlyRate = [@50.00 retain];
+        _name = [[[NSUserDefaults standardUserDefaults] stringForKey:@"personName"] copy];
+        _hourlyRate = [[NSNumber numberWithDouble:[[NSUserDefaults standardUserDefaults] doubleForKey:@"personHourlyRate"]] retain];
     }
-    
+
     return self;
 }
 
