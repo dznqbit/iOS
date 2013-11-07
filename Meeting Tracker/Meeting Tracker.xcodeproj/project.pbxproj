@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		10253868182B4B2800223738 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 10253867182B4B2800223738 /* AppDelegate.m */; };
+		10253871182B4CA300223738 /* PreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1025386F182B4CA300223738 /* PreferencesWindowController.m */; };
+		10253872182B4CA300223738 /* PreferencesWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10253870182B4CA300223738 /* PreferencesWindowController.xib */; };
 		103C68C4180E61C900337C75 /* testPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = 103C68C2180E61C900337C75 /* testPerson.m */; };
 		103C68C5180E61C900337C75 /* testMeeting.m in Sources */ = {isa = PBXBuildFile; fileRef = 103C68C3180E61C900337C75 /* testMeeting.m */; };
 		107E8425180C8F1C004FAAFB /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 107E8424180C8F1C004FAAFB /* Cocoa.framework */; };
@@ -35,6 +38,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		10253866182B4B2800223738 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		10253867182B4B2800223738 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		1025386E182B4CA300223738 /* PreferencesWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesWindowController.h; sourceTree = "<group>"; };
+		1025386F182B4CA300223738 /* PreferencesWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesWindowController.m; sourceTree = "<group>"; };
+		10253870182B4CA300223738 /* PreferencesWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreferencesWindowController.xib; sourceTree = "<group>"; };
 		103C68C2180E61C900337C75 /* testPerson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = testPerson.m; sourceTree = "<group>"; };
 		103C68C3180E61C900337C75 /* testMeeting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = testMeeting.m; sourceTree = "<group>"; };
 		107E8421180C8F1C004FAAFB /* Meeting Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Meeting Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -132,7 +140,12 @@
 				107E8436180C8F1C004FAAFB /* MeetingDocument.h */,
 				107E8437180C8F1C004FAAFB /* MeetingDocument.m */,
 				107E8439180C8F1C004FAAFB /* MeetingDocument.xib */,
+				10253866182B4B2800223738 /* AppDelegate.h */,
+				10253867182B4B2800223738 /* AppDelegate.m */,
 				107E843C180C8F1C004FAAFB /* MainMenu.xib */,
+				1025386E182B4CA300223738 /* PreferencesWindowController.h */,
+				1025386F182B4CA300223738 /* PreferencesWindowController.m */,
+				10253870182B4CA300223738 /* PreferencesWindowController.xib */,
 				107E843F180C8F1C004FAAFB /* Images.xcassets */,
 				107E842B180C8F1C004FAAFB /* Supporting Files */,
 			);
@@ -247,6 +260,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10253872182B4CA300223738 /* PreferencesWindowController.xib in Resources */,
 				107E842F180C8F1C004FAAFB /* InfoPlist.strings in Resources */,
 				107E8440180C8F1C004FAAFB /* Images.xcassets in Resources */,
 				107E8435180C8F1C004FAAFB /* Credits.rtf in Resources */,
@@ -274,6 +288,8 @@
 				107E8438180C8F1C004FAAFB /* MeetingDocument.m in Sources */,
 				107E8431180C8F1C004FAAFB /* main.m in Sources */,
 				107E8460180C8F9C004FAAFB /* Meeting.m in Sources */,
+				10253871182B4CA300223738 /* PreferencesWindowController.m in Sources */,
+				10253868182B4B2800223738 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
