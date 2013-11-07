@@ -218,14 +218,14 @@
                             <rect key="frame" x="1" y="17" width="658" height="190"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
-                                <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" autosaveColumns="NO" headerView="Ob8-dc-YFQ" id="swu-9l-DQL">
+                                <tableView identifier="personsPresent" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" autosaveName="personsPresent" headerView="Ob8-dc-YFQ" id="swu-9l-DQL">
                                     <rect key="frame" x="0.0" y="0.0" width="658" height="190"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <size key="intercellSpacing" width="3" height="2"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                     <tableColumns>
-                                        <tableColumn width="116" minWidth="40" maxWidth="1000" id="hpM-5j-B2g">
+                                        <tableColumn identifier="personName" width="116" minWidth="40" maxWidth="1000" id="hpM-5j-B2g">
                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Name">
                                                 <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -241,7 +241,7 @@
                                                 <binding destination="EvM-1c-e9I" name="value" keyPath="arrangedObjects.name" id="0Mk-1V-uG6"/>
                                             </connections>
                                         </tableColumn>
-                                        <tableColumn width="536" minWidth="40" maxWidth="1000" id="llx-ci-6nL">
+                                        <tableColumn identifier="personHourlyRate" width="536" minWidth="40" maxWidth="1000" id="llx-ci-6nL">
                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Rate">
                                                 <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -264,6 +264,9 @@
                                             </connections>
                                         </tableColumn>
                                     </tableColumns>
+                                    <connections>
+                                        <binding destination="EvM-1c-e9I" name="sortDescriptors" keyPath="arrangedObjects" id="U4b-GS-vYK"/>
+                                    </connections>
                                 </tableView>
                             </subviews>
                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
