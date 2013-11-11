@@ -19,7 +19,7 @@
         [_startingTime release];
         [theStartingTime retain];
       
-      if (theStartingTime == [NSNull null]) {
+      if (theStartingTime == [NSNull null]) { // TODO How to solve this comparison warning?
         _startingTime = nil;
       }
       else {
@@ -31,9 +31,15 @@
 - (NSDate *)endingTime { return _endingTime; }
 - (void)setEndingTime:(NSDate *)theEndingTime {
     if (_endingTime != theEndingTime) {
-        [_endingTime release];
-        [theEndingTime retain];
+      [_endingTime release];
+      [theEndingTime retain];
+      
+      if (theEndingTime == [NSNull null]) { // TODO How to solve this comparison warning?
+        _endingTime = nil;
+      }
+      else {
         _endingTime = theEndingTime;
+      }
     }
 }
 

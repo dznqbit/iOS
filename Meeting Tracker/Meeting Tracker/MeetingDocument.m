@@ -125,13 +125,13 @@ static void *MeetingDocumentKVOContext;
 }
 
 - (NSDate *)endingTime {
-  [self willChangeValueForKey:@"meetingActive"];
   return self.meeting.endingTime;
-  [self willChangeValueForKey:@"meetingActive"];
 }
 
 - (void)setEndingTime:(NSDate *)theEndingTime {
-    self.meeting.endingTime = theEndingTime;
+  [self willChangeValueForKey:@"meetingActive"];
+  self.meeting.endingTime = theEndingTime;
+  [self didChangeValueForKey:@"meetingActive"];
 }
 
 - (BOOL)meetingNotStarted {
@@ -233,12 +233,6 @@ static void *MeetingDocumentKVOContext;
     }
     
     if ([keyPath isEqualToString:@"startingTime"]) {
-        NSLog(@"Current Value is %@ - %d, %d",
-              [change objectForKey:NSKeyValueChangeOldKey],
-              [change objectForKey:NSKeyValueChangeOldKey] == nil,
-              [change objectForKey:NSKeyValueChangeOldKey] == [NSNull null]
-        );
-        
         [
          [[self undoManager] prepareWithInvocationTarget:self]
             changeKeyPath:keyPath
@@ -250,9 +244,16 @@ static void *MeetingDocumentKVOContext;
     }
 
     if ([keyPath isEqualToString:@"endingTime"]) {
-        NSLog(@"TODO: queue un-end the meeting");
+      [
+       [[self undoManager] prepareWithInvocationTarget:self]
+       changeKeyPath:keyPath
+       ofObject:self
+       toValue:[change objectForKey:NSKeyValueChangeOldKey]
+       ];
+      
+      [[self undoManager] setActionName:@"End Meeting"];
     }
-    
+  
     if ([keyPath isEqualToString:@"name"]) {
         NSLog(@"TODO: queue change person's name");
     }
