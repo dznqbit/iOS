@@ -39,6 +39,12 @@
 
 - (void)updateGUI:(NSTimer *)theTimer;
 
+// Observation
+- (void)startObservingMeeting:(Meeting *)theMeeting;
+- (void)stopObservingMeeting:(Meeting *)theMeeting;
+
+- (void)startObservingPerson:(Person *)thePerson;
+- (void)stopObservingPerson:(Person *)thePerson;
 
 @property (assign) IBOutlet NSButtonCell *startMeetingButton;
 @property (assign) IBOutlet NSButton *endMeetingButton;
