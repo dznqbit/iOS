@@ -21,6 +21,12 @@
 - (NSTimer *)timer;
 - (void)setTimer:(NSTimer *)theTimer;
 
+- (void)setStartingTime:(NSDate *)theDate;
+- (NSDate *)startingTime;
+
+- (void)setEndingTime:(NSDate *)theDate;
+- (NSDate *)endingTime;
+
 // UI stuff
 - (BOOL)meetingNotStarted;
 - (BOOL)meetingActive;

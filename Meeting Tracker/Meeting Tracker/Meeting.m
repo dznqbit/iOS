@@ -18,7 +18,13 @@
     if (_startingTime != theStartingTime) {
         [_startingTime release];
         [theStartingTime retain];
+      
+      if (theStartingTime == [NSNull null]) {
+        _startingTime = nil;
+      }
+      else {
         _startingTime = theStartingTime;
+      }
     }
 }
 

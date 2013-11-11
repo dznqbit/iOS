@@ -69,6 +69,7 @@ static void *MeetingDocumentKVOContext;
     // You can also choose to override -readFromFileWrapper:ofType:error: or -readFromURL:ofType:error: instead.
     // If you override either of these, you should also override -isEntireFileLoaded to return NO if the contents are lazily loaded.
     
+    return YES; // DEBUG FOR NOW
     NSLog(@"Unarchive data %@", data);
 
     if ([data length] > 0) {
@@ -107,6 +108,30 @@ static void *MeetingDocumentKVOContext;
         [_timer release];
         _timer = theTimer;
     }
+}
+
+- (NSDate *)startingTime {
+    return self.meeting.startingTime;
+}
+
+- (void)setStartingTime:(NSDate *)theStartingTime {
+    [self willChangeValueForKey:@"meetingNotStarted"];
+    [self willChangeValueForKey:@"meetingActive"];
+  
+    self.meeting.startingTime = theStartingTime;
+  
+    [self didChangeValueForKey:@"meetingNotStarted"];
+    [self didChangeValueForKey:@"meetingActive"];
+}
+
+- (NSDate *)endingTime {
+  [self willChangeValueForKey:@"meetingActive"];
+  return self.meeting.endingTime;
+  [self willChangeValueForKey:@"meetingActive"];
+}
+
+- (void)setEndingTime:(NSDate *)theEndingTime {
+    self.meeting.endingTime = theEndingTime;
 }
 
 - (BOOL)meetingNotStarted {
@@ -158,21 +183,11 @@ static void *MeetingDocumentKVOContext;
 }
 
 - (IBAction)pressedStartMeeting:(id)sender {
-    [self willChangeValueForKey:@"meetingNotStarted"];
-    [self willChangeValueForKey:@"meetingActive"];
-    
-    [[self meeting] setStartingTime: [NSDate date]];
-    
-    [self didChangeValueForKey:@"meetingNotStarted"];
-    [self didChangeValueForKey:@"meetingActive"];
+    self.startingTime = [NSDate date];
 }
 
 - (IBAction)pressedEndMeeting:(id)sender {
-    [self willChangeValueForKey:@"meetingActive"];
-    
-    [[self meeting] setEndingTime: [NSDate date]];
-    
-    [self didChangeValueForKey:@"meetingActive"];
+    self.endingTime = [NSDate date];
 }
 
 - (void)setPersonsPresent:(NSMutableArray *)thePersonsPresent {
@@ -206,7 +221,7 @@ static void *MeetingDocumentKVOContext;
                              ofObject:object
                                change:change
                               context:context
-         ];
+        ];
         
         return;
     }
@@ -218,17 +233,20 @@ static void *MeetingDocumentKVOContext;
     }
     
     if ([keyPath isEqualToString:@"startingTime"]) {
-        /*
+        NSLog(@"Current Value is %@ - %d, %d",
+              [change objectForKey:NSKeyValueChangeOldKey],
+              [change objectForKey:NSKeyValueChangeOldKey] == nil,
+              [change objectForKey:NSKeyValueChangeOldKey] == [NSNull null]
+        );
+        
         [
          [[self undoManager] prepareWithInvocationTarget:self]
             changeKeyPath:keyPath
                  ofObject:self
-                  toValue:[change objectForKey:NSKeyValueChangeOldKey
-          ]
+                  toValue:[change objectForKey:NSKeyValueChangeOldKey]
         ];
         
         [[self undoManager] setActionName:@"Start Meeting"];
-         */
     }
 
     if ([keyPath isEqualToString:@"endingTime"]) {
