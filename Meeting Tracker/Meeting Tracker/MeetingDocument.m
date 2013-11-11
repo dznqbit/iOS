@@ -68,8 +68,7 @@ static void *MeetingDocumentKVOContext;
     // Insert code here to read your document from the given data of the specified type. If outError != NULL, ensure that you create and set an appropriate error when returning NO.
     // You can also choose to override -readFromFileWrapper:ofType:error: or -readFromURL:ofType:error: instead.
     // If you override either of these, you should also override -isEntireFileLoaded to return NO if the contents are lazily loaded.
-    
-    return YES; // DEBUG FOR NOW
+  
     NSLog(@"Unarchive data %@", data);
 
     if ([data length] > 0) {
@@ -255,11 +254,25 @@ static void *MeetingDocumentKVOContext;
     }
   
     if ([keyPath isEqualToString:@"name"]) {
-        NSLog(@"TODO: queue change person's name");
+      [
+       [[self undoManager] prepareWithInvocationTarget:self]
+       changeKeyPath:keyPath
+       ofObject:object
+       toValue:[change objectForKey:NSKeyValueChangeOldKey]
+       ];
+      
+      [[self undoManager] setActionName:@"Change Attendee Name"];
     }
 
     if ([keyPath isEqualToString:@"hourlyRate"]) {
-        NSLog(@"TODO: queue change person's hourly rate");
+      [
+       [[self undoManager] prepareWithInvocationTarget:self]
+       changeKeyPath:keyPath
+       ofObject:object
+       toValue:[change objectForKey:NSKeyValueChangeOldKey]
+       ];
+      
+      [[self undoManager] setActionName:@"Change Attendee Hourly Rate"];
     }
 }
 
