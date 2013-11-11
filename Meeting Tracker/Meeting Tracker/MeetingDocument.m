@@ -10,16 +10,20 @@
 
 @implementation MeetingDocument
 
+static void *MeetingDocumentKVOContext;
+
 - (id)init
 {
     if (self = [super init]) {
         _meeting = [[Meeting alloc] init];
+        [self startObservingMeeting:[self meeting]];
     }
  
     return self;
 }
 
 - (void)dealloc {
+    [self stopObservingMeeting:_meeting];
     [_meeting release];
     
     if (_timer != nil) {
@@ -86,9 +90,13 @@
 - (Meeting *)meeting { return _meeting; }
 - (void)setMeeting:(Meeting *)theMeeting {
     if (_meeting != theMeeting) {
+        [self stopObservingMeeting:[self meeting]];
+        ;
         [theMeeting retain];
         [_meeting release];
         _meeting = theMeeting;
+
+        [self startObservingMeeting:[self meeting]];
     }
 }
 
@@ -183,6 +191,97 @@
 
     [[self billingRateLiveComputeLabel] setObjectValue:[[self personsPresent] valueForKeyPath:@"@sum.hourlyRate"]];
     [[self billingRateTargetActionLabel] setObjectValue:[[self meeting] totalBillingRate]];
+}
+
+- (void)changeKeyPath:(NSString *)keyPath
+             ofObject:(id)obj
+              toValue:(id)newValue {
+    NSLog(@"changeKeyPath");
+    [obj setValue:newValue forKeyPath:keyPath];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+    if (context != &MeetingDocumentKVOContext) {
+        [super observeValueForKeyPath:keyPath
+                             ofObject:object
+                               change:change
+                              context:context
+         ];
+        
+        return;
+    }
+    
+    NSLog(@"OVFKP %@", keyPath);
+    
+    if ([keyPath isEqualToString:@"personsPresent"]) {
+        NSLog(@"TODO: queue add/remove persons");
+    }
+    
+    if ([keyPath isEqualToString:@"startingTime"]) {
+        /*
+        [
+         [[self undoManager] prepareWithInvocationTarget:self]
+            changeKeyPath:keyPath
+                 ofObject:self
+                  toValue:[change objectForKey:NSKeyValueChangeOldKey
+          ]
+        ];
+        
+        [[self undoManager] setActionName:@"Start Meeting"];
+         */
+    }
+
+    if ([keyPath isEqualToString:@"endingTime"]) {
+        NSLog(@"TODO: queue un-end the meeting");
+    }
+    
+    if ([keyPath isEqualToString:@"name"]) {
+        NSLog(@"TODO: queue change person's name");
+    }
+
+    if ([keyPath isEqualToString:@"hourlyRate"]) {
+        NSLog(@"TODO: queue change person's hourly rate");
+    }
+}
+
+- (void)startObservingMeeting:(Meeting *)theMeeting {
+    for (Person *person in theMeeting.personsPresent) {
+        [self startObservingPerson:person];
+    }
+    
+    for (NSString *keyPath in @[@"personsPresent", @"startingTime", @"endingTime"]) {
+        [theMeeting addObserver:self
+                     forKeyPath:keyPath
+                        options:NSKeyValueObservingOptionOld|NSKeyValueObservingOptionNew
+                        context:&MeetingDocumentKVOContext
+         ];
+    }
+}
+
+- (void)stopObservingMeeting:(Meeting *)theMeeting {
+    for (NSString *keyPath in @[@"personsPresent", @"startingTime", @"endingTime"]) {
+        [theMeeting removeObserver:self
+                        forKeyPath:keyPath];
+    }
+}
+
+- (void)startObservingPerson:(Person *)thePerson {
+    for (NSString *keyPath in @[@"name", @"hourlyRate"]) {
+        [thePerson addObserver:self
+                    forKeyPath:keyPath
+                       options:NSKeyValueObservingOptionOld|NSKeyValueObservingOptionNew
+                       context:&MeetingDocumentKVOContext
+         ];
+    }
+}
+
+- (void)stopObservingPerson:(Person *)thePerson {
+    for (NSString *keyPath in @[@"name", @"hourlyRate"]) {
+        [thePerson removeObserver:self
+                       forKeyPath:keyPath
+         ];
+    }
+
 }
 
 - (BOOL)validateMenuItem:(NSMenuItem *)menuItem {
