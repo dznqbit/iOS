@@ -91,7 +91,7 @@ static void *MeetingDocumentKVOContext;
 - (void)setMeeting:(Meeting *)theMeeting {
     if (_meeting != theMeeting) {
         [self stopObservingMeeting:[self meeting]];
-        ;
+
         [theMeeting retain];
         [_meeting release];
         _meeting = theMeeting;
@@ -324,10 +324,14 @@ static void *MeetingDocumentKVOContext;
 }
 
 - (void)stopObservingMeeting:(Meeting *)theMeeting {
-    for (NSString *keyPath in @[@"personsPresent", @"startingTime", @"endingTime"]) {
-        [theMeeting removeObserver:self
-                        forKeyPath:keyPath];
-    }
+  for (Person *person in theMeeting.personsPresent) {
+    [self stopObservingPerson:person];
+  }
+  
+  for (NSString *keyPath in @[@"personsPresent", @"startingTime", @"endingTime"]) {
+    [theMeeting removeObserver:self
+                    forKeyPath:keyPath];
+  }
 }
 
 - (void)startObservingPerson:(Person *)thePerson {
