@@ -69,7 +69,7 @@ static void *MeetingDocumentKVOContext;
     // You can also choose to override -readFromFileWrapper:ofType:error: or -readFromURL:ofType:error: instead.
     // If you override either of these, you should also override -isEntireFileLoaded to return NO if the contents are lazily loaded.
   
-    NSLog(@"Unarchive data %@", data);
+    // NSLog(@"Unarchive data %@", data);
 
     if ([data length] > 0) {
         @try {
@@ -190,7 +190,15 @@ static void *MeetingDocumentKVOContext;
 }
 
 - (void)setPersonsPresent:(NSMutableArray *)thePersonsPresent {
-    [[self meeting] setPersonsPresent:thePersonsPresent];
+  for (Person *person in [self personsPresent]) {
+    [self stopObservingPerson:person];
+  }
+  
+  [[self meeting] setPersonsPresent:thePersonsPresent];
+  
+  for (Person *person in [self personsPresent]) {
+    [self startObservingPerson:person];
+  }
 }
 
 - (NSMutableArray *)personsPresent {
@@ -210,8 +218,9 @@ static void *MeetingDocumentKVOContext;
 - (void)changeKeyPath:(NSString *)keyPath
              ofObject:(id)obj
               toValue:(id)newValue {
-    NSLog(@"changeKeyPath");
-    [obj setValue:newValue forKeyPath:keyPath];
+    NSLog(@"obj %@ changeKeyPath %@", obj, keyPath);
+  
+     [obj setValue:newValue forKeyPath:keyPath];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
@@ -226,9 +235,33 @@ static void *MeetingDocumentKVOContext;
     }
     
     NSLog(@"OVFKP %@", keyPath);
-    
+  
+    id oldValue = [change objectForKey:NSKeyValueChangeOldKey];
+    if (oldValue == [NSNull null]) {
+      oldValue = nil;
+    }
+  
     if ([keyPath isEqualToString:@"personsPresent"]) {
-        NSLog(@"TODO: queue add/remove persons");
+      switch([change[NSKeyValueChangeKindKey] integerValue]) {
+        case NSKeyValueChangeSetting:
+          [
+            [[self undoManager] prepareWithInvocationTarget:self]
+            changeKeyPath:keyPath
+            ofObject:self
+            toValue:oldValue
+          ];
+
+          [[self undoManager] setActionName:@"Edit"];
+          break;
+        case NSKeyValueChangeInsertion:
+          NSLog(@"Queue up removal");
+          break;
+        case NSKeyValueChangeRemoval:
+          NSLog(@"Queue up insertion");
+          break;
+        default:
+          NSLog(@"Didn't recognize %ld", (long)[change[NSKeyValueChangeKindKey] integerValue]);
+      }
     }
     
     if ([keyPath isEqualToString:@"startingTime"]) {
@@ -236,7 +269,7 @@ static void *MeetingDocumentKVOContext;
          [[self undoManager] prepareWithInvocationTarget:self]
             changeKeyPath:keyPath
                  ofObject:self
-                  toValue:[change objectForKey:NSKeyValueChangeOldKey]
+                  toValue:oldValue
         ];
         
         [[self undoManager] setActionName:@"Start Meeting"];
@@ -247,7 +280,7 @@ static void *MeetingDocumentKVOContext;
        [[self undoManager] prepareWithInvocationTarget:self]
        changeKeyPath:keyPath
        ofObject:self
-       toValue:[change objectForKey:NSKeyValueChangeOldKey]
+       toValue:oldValue
        ];
       
       [[self undoManager] setActionName:@"End Meeting"];
@@ -258,7 +291,7 @@ static void *MeetingDocumentKVOContext;
        [[self undoManager] prepareWithInvocationTarget:self]
        changeKeyPath:keyPath
        ofObject:object
-       toValue:[change objectForKey:NSKeyValueChangeOldKey]
+       toValue:oldValue
        ];
       
       [[self undoManager] setActionName:@"Change Attendee Name"];
@@ -269,7 +302,7 @@ static void *MeetingDocumentKVOContext;
        [[self undoManager] prepareWithInvocationTarget:self]
        changeKeyPath:keyPath
        ofObject:object
-       toValue:[change objectForKey:NSKeyValueChangeOldKey]
+       toValue:oldValue
        ];
       
       [[self undoManager] setActionName:@"Change Attendee Hourly Rate"];
