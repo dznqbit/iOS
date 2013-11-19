@@ -109,10 +109,46 @@ static void *VoltagePlotViewKVOContext;
 - (void)drawBackground {
   switch(self.drawMode) {
     case 1: // BAD
+      [[NSColor blackColor] set];
+      [NSBezierPath fillRect:[self bounds]];
+      
+      for (NSUInteger i = 0; i < 100; ++i) {
+        NSColor *someColor = @[
+                               [NSColor purpleColor],
+                               [NSColor greenColor],
+                               [NSColor magentaColor],
+                               [NSColor orangeColor]
+                               ][random() % 4];
+        
+        [someColor set];
+      
+        
+        NSBezierPath *dotPath = [NSBezierPath bezierPath];
+        NSPoint circlePoint = NSMakePoint(random() % (long)[self bounds].size.width, random() % (long)[self bounds].size.height);
+        NSLog(@"%@", NSStringFromPoint(circlePoint));
+        double circleRadius = (double)((long)random() % 10);
+        [dotPath appendBezierPathWithOvalInRect: NSMakeRect(circlePoint.x - circleRadius, circlePoint.y - circleRadius, circleRadius * 2, circleRadius * 2)];
 
+        [dotPath fill];
+      }
+      
       break;
       
     case 2: // UGLY
+      for (WidgetTestObservationPoint *point in self.widgetTester.testData) {
+        NSPoint translatedPoint = [self translateDataPointToViewport:point];
+        
+        NSColor *someColor = @[
+                               [NSColor purpleColor],
+                               [NSColor greenColor],
+                               [NSColor magentaColor],
+                               [NSColor orangeColor]
+                               ][random() % 4];
+        [someColor set];
+        [NSBezierPath fillRect:NSMakeRect(translatedPoint.x, 0, self.bounds.size.width, self.bounds.size.height)];
+        
+      }
+      
       break;
       
     default: // GOOD
@@ -124,10 +160,15 @@ static void *VoltagePlotViewKVOContext;
 - (void)drawVoltagePath:(NSBezierPath *)voltagePath {
   switch(self.drawMode) {
     case 1: // BAD
-      
+      [[NSColor yellowColor] set];
+      [voltagePath stroke];
+      [voltagePath fill];
       break;
       
     case 2: // UGLY
+            [[NSColor blackColor] set];
+      [voltagePath stroke];
+      [voltagePath fill];
       break;
       
     default: // GOOD
