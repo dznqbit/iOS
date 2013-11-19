@@ -83,10 +83,9 @@ static void *VoltagePlotViewKVOContext;
   [super drawRect:dirtyRect];
   
   NSRect bounds = [self bounds];
-  
-  [[NSColor blackColor] set];
-  [NSBezierPath fillRect:bounds];
 
+  [self drawBackground];
+  
   NSBezierPath *voltagePath = [NSBezierPath bezierPath];
 
   NSPoint originPoint = { .x = 0.0, .y = bounds.size.height / 2 };
@@ -96,33 +95,50 @@ static void *VoltagePlotViewKVOContext;
     [voltagePath lineToPoint:[self translateDataPointToViewport:point]];
   }
   
-  [[NSColor redColor] set];
-  [voltagePath stroke];
+  [voltagePath lineToPoint:NSMakePoint(self.bounds.size.width, 0.0)];
+  [voltagePath lineToPoint:NSMakePoint(0.0, 0.0)];
+  [voltagePath lineToPoint:originPoint];
+  
+  [self drawVoltagePath:voltagePath];
   
   if (self.mouseInViewport) {
-    NSColor *backgroundWhite = [NSColor colorWithDeviceWhite:1.0 alpha:0.8];
-    
-    NSDictionary *attrDictionary = @{
-                                     NSFontAttributeName : [NSFont fontWithName:@"Palatino-Roman" size:14.0],
-                                     NSForegroundColorAttributeName : [NSColor blackColor],
-                                     NSBackgroundColorAttributeName : backgroundWhite
-                                     };
-
-
-    
-    NSString *initString = [NSString stringWithFormat:@" View(%.2f, %.2f)    Data(%.2f, %.2f) ",
-                            self.mouseViewportPosition.x, self.mouseViewportPosition.y,
-                            self.mouseDataPosition.observationTime, self.mouseDataPosition.voltage
-                            ];
-
-    NSMutableAttributedString *dataString = [[NSMutableAttributedString alloc] initWithString:initString
-                                                                                   attributes:attrDictionary];
-    [dataString drawAtPoint:NSMakePoint(
-                                          self.mouseViewportPosition.x + 30,
-                                          self.mouseViewportPosition.y - 10
-                                          )
-     ];
+    [self drawMouseHover];
   }
+}
+
+- (void)drawBackground {
+  [[NSColor blackColor] set];
+  [NSBezierPath fillRect:[self bounds]];
+}
+
+- (void)drawVoltagePath:(NSBezierPath *)voltagePath {
+  [[NSColor redColor] set];
+  [voltagePath stroke];
+}
+
+- (void)drawMouseHover {
+  NSColor *backgroundWhite = [NSColor colorWithDeviceWhite:1.0 alpha:0.8];
+  
+  NSDictionary *attrDictionary = @{
+                                   NSFontAttributeName : [NSFont fontWithName:@"Comic Sans MS" size:14.0],
+                                   NSForegroundColorAttributeName : [NSColor blackColor],
+                                   NSBackgroundColorAttributeName : backgroundWhite
+                                   };
+  
+  
+  
+  NSString *initString = [NSString stringWithFormat:@" View(%.2f, %.2f)    Data(%.2f, %.2f) ",
+                          self.mouseViewportPosition.x, self.mouseViewportPosition.y,
+                          self.mouseDataPosition.observationTime, self.mouseDataPosition.voltage
+                          ];
+  
+  NSMutableAttributedString *dataString = [[NSMutableAttributedString alloc] initWithString:initString
+                                                                                 attributes:attrDictionary];
+  [dataString drawAtPoint:NSMakePoint(
+                                      self.mouseViewportPosition.x + 30,
+                                      self.mouseViewportPosition.y - 10
+                                      )
+   ];
 }
 
 - (void)mouseEntered:(NSEvent *)theEvent {
@@ -141,8 +157,6 @@ static void *VoltagePlotViewKVOContext;
   
   [self setNeedsDisplay:true];
 }
-
-
 
 - (WidgetTestObservationPoint *)translateViewportPointToData:(NSPoint)viewportPoint  {
   

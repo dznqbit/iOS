@@ -25,6 +25,10 @@
 - (void)startWatchingWidgetTester;
 - (void)stopWatchingWidgetTester;
 
+- (void)drawBackground;
+- (void)drawVoltagePath:(NSBezierPath *)voltagePath;
+- (void)drawMouseHover;
+
 - (WidgetTestObservationPoint *)translateViewportPointToData:(NSPoint)viewportPoint;
 - (NSPoint)translateDataPointToViewport:(WidgetTestObservationPoint *)dataPoint;
 
