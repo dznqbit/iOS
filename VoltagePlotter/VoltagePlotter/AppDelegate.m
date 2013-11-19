@@ -12,7 +12,25 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-  // Insert code here to initialize your application
+  self.widgetTester = [[WidgetTester alloc] init];
+  [self generateNewTestData];
+  self.voltagePlotView.widgetTester = self.widgetTester;
+}
+
+- (void)generateNewTestData {
+  [self.widgetTester performTest];
+}
+
+- (IBAction)pressedNewTestData:(id)sender {
+  [self generateNewTestData];
+}
+
+- (IBAction)pressedSummarize:(id)sender {
+  NSLog(@"%@", self.widgetTester.summary);
+}
+
+- (IBAction)selectedDrawMode:(id)sender {
+  NSLog(@"selected %li", (long)[sender selectedSegment]);
 }
 
 @end

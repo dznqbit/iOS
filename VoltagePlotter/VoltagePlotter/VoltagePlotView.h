@@ -7,7 +7,16 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "WidgetTester.h"
 
-@interface VoltagePlotView : NSView
+@interface VoltagePlotView : NSView {
+  WidgetTester *_widgetTester;
+}
+
+- (void)setWidgetTester:(WidgetTester *)theWidgetTester;
+- (WidgetTester *)getWidgetTester;
+
+- (void)startWatchingWidgetTester;
+- (void)stopWatchingWidgetTester;
 
 @end
