@@ -482,6 +482,7 @@
 				10DFC44F183B02AD00FBC76A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		10DFC450183B02AD00FBC76A /* Build configuration list for PBXNativeTarget "VoltagePlotterTests" */ = {
 			isa = XCConfigurationList;
@@ -490,6 +491,7 @@
 				10DFC452183B02AD00FBC76A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

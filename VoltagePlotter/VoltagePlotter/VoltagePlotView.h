@@ -8,10 +8,15 @@
 
 #import <Cocoa/Cocoa.h>
 #import "WidgetTester.h"
+#import "WidgetTestObservationPoint.h"
 
 @interface VoltagePlotView : NSView {
   WidgetTester *_widgetTester;
 }
+
+@property (nonatomic,assign)BOOL mouseInViewport;
+@property (nonatomic,assign)NSPoint mouseViewportPosition;
+@property (nonatomic,weak)WidgetTestObservationPoint *mouseDataPosition;
 
 - (void)setWidgetTester:(WidgetTester *)theWidgetTester;
 - (WidgetTester *)widgetTester;

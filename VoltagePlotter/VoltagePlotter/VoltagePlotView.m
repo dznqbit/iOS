@@ -45,7 +45,7 @@ static void *VoltagePlotViewKVOContext;
   [self startWatchingWidgetTester];
 }
 
-- (WidgetTester *)getWidgetTester {
+- (WidgetTester *)widgetTester {
   return _widgetTester;
 }
 
@@ -65,8 +65,8 @@ static void *VoltagePlotViewKVOContext;
 }
 
 - (void)stopWatchingWidgetTester {
-  [[self getWidgetTester] removeObserver:self
-                              forKeyPath:@"testData"
+  [self.widgetTester removeObserver:self
+                         forKeyPath:@"testData"
    ];
 }
 
@@ -85,12 +85,52 @@ static void *VoltagePlotViewKVOContext;
   NSRect bounds = [self bounds];
   
   [[NSColor blackColor] set];
-  
   [NSBezierPath fillRect:bounds];
+  
+  if (self.mouseInViewport) {
+    NSColor *backgroundWhite = [NSColor colorWithDeviceWhite:1.0 alpha:0.8];
+    
+    NSDictionary *attrDictionary = @{
+                                     NSFontAttributeName : [NSFont fontWithName:@"Palatino-Roman" size:14.0],
+                                     NSForegroundColorAttributeName : [NSColor blackColor],
+                                     NSBackgroundColorAttributeName : backgroundWhite
+                                     };
+
+
+    
+    NSString *initString = [NSString stringWithFormat:@" View(%li,%li) Data(%li,%li) ",
+                            (long)self.mouseViewportPosition.x, (long)self.mouseViewportPosition.y,
+                            (long)0, (long)0
+                            // self.mouseDataPosition.time, self.mouseDataPosition.voltage
+                            ];
+
+    NSMutableAttributedString *dataString = [[NSMutableAttributedString alloc] initWithString:initString
+                                                                                   attributes:attrDictionary];
+    [dataString drawAtPoint:NSMakePoint(
+                                          self.mouseViewportPosition.x + 30,
+                                          self.mouseViewportPosition.y - 10
+                                          )
+     ];
+  }
+}
+
+- (void)mouseEntered:(NSEvent *)theEvent {
+  [self mouseMoved:theEvent];
 }
 
 - (void)mouseMoved:(NSEvent *)theEvent {
-  NSLog(@"mouseMoved: %@", NSStringFromPoint(theEvent.locationInWindow));
+  self.mouseInViewport = YES;
+  self.mouseViewportPosition = [self convertPoint:theEvent.locationInWindow fromView:nil];
+  
+  NSLog(@"%li", [self.widgetTester.testData count]);
+  // self.mouseDataPosition = [self.widgetTester
+  [self setNeedsDisplay:true];
+}
+
+- (void)mouseExited:(NSEvent *)theEvent {
+  self.mouseInViewport = NO;
+  
+  [self setNeedsDisplay:true];
 }
 
 - (NSPoint)translateDataPointToViewport:(NSPoint)dataPoint  {

@@ -13,8 +13,8 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
   self.widgetTester = [[WidgetTester alloc] init];
-  [self generateNewTestData];
   self.voltagePlotView.widgetTester = self.widgetTester;
+  [self generateNewTestData];
 }
 
 - (void)generateNewTestData {
