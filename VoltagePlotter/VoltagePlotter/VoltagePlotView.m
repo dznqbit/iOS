@@ -21,9 +21,12 @@
 
 - (void)drawRect:(NSRect)dirtyRect
 {
-	[super drawRect:dirtyRect];
-	
-    // Drawing code here.
+  [super drawRect:dirtyRect];
+  
+  NSRect bounds = [self bounds];
+  
+  [[NSColor greenColor] set];
+  [NSBezierPath fillRect:bounds];
 }
 
 @end

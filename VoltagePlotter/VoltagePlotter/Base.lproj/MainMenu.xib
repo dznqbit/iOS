@@ -656,21 +656,21 @@
                 <rect key="frame" x="0.0" y="0.0" width="480" height="360"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <tabView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="srA-aI-rPz">
+                    <tabView translatesAutoresizingMaskIntoConstraints="NO" id="srA-aI-rPz">
                         <rect key="frame" x="13" y="64" width="454" height="290"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <font key="font" metaFont="system"/>
                         <tabViewItems>
                             <tabViewItem label="Plot" identifier="1" id="vOo-k9-kjp">
-                                <view key="view" ambiguous="YES" id="iw5-WW-47a">
+                                <view key="view" id="iw5-WW-47a">
                                     <rect key="frame" x="10" y="33" width="434" height="244"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bdj-At-Lg2" customClass="VoltagePlotView">
+                                        <customView translatesAutoresizingMaskIntoConstraints="NO" id="Bdj-At-Lg2" customClass="VoltagePlotView">
                                             <rect key="frame" x="17" y="37" width="400" height="204"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         </customView>
-                                        <segmentedControl verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EBS-0F-fEM">
+                                        <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="EBS-0F-fEM">
                                             <rect key="frame" x="112" y="6" width="154" height="24"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <segmentedCell key="cell" alignment="left" style="rounded" trackingMode="selectOne" id="Rz4-aj-Jny">
@@ -682,7 +682,7 @@
                                                 </segments>
                                             </segmentedCell>
                                         </segmentedControl>
-                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bRf-kA-JqW">
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bRf-kA-JqW">
                                             <rect key="frame" x="14" y="12" width="95" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Drawing Mode" id="gbP-cK-yBc">
@@ -692,6 +692,20 @@
                                             </textFieldCell>
                                         </textField>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="Bdj-At-Lg2" secondAttribute="trailing" constant="17" id="7Li-0b-wIG"/>
+                                        <constraint firstAttribute="trailing" secondItem="Bdj-At-Lg2" secondAttribute="trailing" constant="17" id="BPG-cj-ghd"/>
+                                        <constraint firstItem="EBS-0F-fEM" firstAttribute="leading" secondItem="bRf-kA-JqW" secondAttribute="trailing" constant="8" symbolic="YES" id="GgE-He-Z58"/>
+                                        <constraint firstAttribute="trailing" secondItem="Bdj-At-Lg2" secondAttribute="trailing" constant="17" id="QF9-WL-9AI"/>
+                                        <constraint firstItem="Bdj-At-Lg2" firstAttribute="top" secondItem="iw5-WW-47a" secondAttribute="top" constant="3" id="RmZ-3r-Lz6"/>
+                                        <constraint firstItem="Bdj-At-Lg2" firstAttribute="top" secondItem="iw5-WW-47a" secondAttribute="top" constant="3" id="X23-Um-q3B"/>
+                                        <constraint firstAttribute="bottom" secondItem="Bdj-At-Lg2" secondAttribute="bottom" constant="37" id="dLZ-Sb-wmU"/>
+                                        <constraint firstItem="Bdj-At-Lg2" firstAttribute="top" secondItem="iw5-WW-47a" secondAttribute="top" constant="3" id="eF6-l2-ZCY"/>
+                                        <constraint firstItem="bRf-kA-JqW" firstAttribute="top" secondItem="Bdj-At-Lg2" secondAttribute="bottom" constant="8" symbolic="YES" id="kKO-4d-VUs"/>
+                                        <constraint firstItem="Bdj-At-Lg2" firstAttribute="centerX" secondItem="iw5-WW-47a" secondAttribute="centerX" id="nTc-e2-phf"/>
+                                        <constraint firstItem="Bdj-At-Lg2" firstAttribute="leading" secondItem="bRf-kA-JqW" secondAttribute="leading" id="sja-Bf-fDy"/>
+                                        <constraint firstItem="EBS-0F-fEM" firstAttribute="top" secondItem="Bdj-At-Lg2" secondAttribute="bottom" constant="8" symbolic="YES" id="tNJ-zt-LPN"/>
+                                    </constraints>
                                 </view>
                             </tabViewItem>
                             <tabViewItem label="Table" identifier="2" id="lrh-dF-rpA">
@@ -703,6 +717,12 @@
                         </tabViewItems>
                     </tabView>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="srA-aI-rPz" firstAttribute="top" secondItem="372" secondAttribute="top" constant="12" symbolic="YES" id="2xy-8x-eu7"/>
+                    <constraint firstItem="srA-aI-rPz" firstAttribute="leading" secondItem="372" secondAttribute="leading" constant="20" symbolic="YES" id="L1U-vY-hdM"/>
+                    <constraint firstAttribute="trailing" secondItem="srA-aI-rPz" secondAttribute="trailing" constant="20" symbolic="YES" id="NQ2-u7-GgD"/>
+                    <constraint firstAttribute="bottom" secondItem="srA-aI-rPz" secondAttribute="bottom" constant="74" id="gHH-Bz-jPS"/>
+                </constraints>
             </view>
         </window>
         <customObject id="494" customClass="AppDelegate">
