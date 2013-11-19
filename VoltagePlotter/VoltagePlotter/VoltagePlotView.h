@@ -14,7 +14,7 @@
 }
 
 - (void)setWidgetTester:(WidgetTester *)theWidgetTester;
-- (WidgetTester *)getWidgetTester;
+- (WidgetTester *)widgetTester;
 
 - (void)startWatchingWidgetTester;
 - (void)stopWatchingWidgetTester;

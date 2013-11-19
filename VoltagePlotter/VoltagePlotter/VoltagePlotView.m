@@ -71,10 +71,10 @@ static void *VoltagePlotViewKVOContext;
 }
 
 - (void)startWatchingWidgetTester {
-  [[self getWidgetTester] addObserver:self
-                           forKeyPath:@"testData"
-                              options:NSKeyValueObservingOptionOld|NSKeyValueObservingOptionNew
-                              context:&VoltagePlotViewKVOContext
+  [self.widgetTester addObserver:self
+                      forKeyPath:@"testData"
+                         options:NSKeyValueObservingOptionOld|NSKeyValueObservingOptionNew
+                         context:&VoltagePlotViewKVOContext
    ];
 }
 
@@ -96,15 +96,15 @@ static void *VoltagePlotViewKVOContext;
 - (NSPoint)translateDataPointToViewport:(NSPoint)dataPoint  {
   NSPoint viewportPoint = {
     .x = [self translate:dataPoint.x
-               aMinValue:[[self getWidgetTester] timeMinimum]
-               aMaxValue:[[self getWidgetTester] timeMaximum]
+               aMinValue:self.widgetTester.timeMinimum
+               aMaxValue:self.widgetTester.timeMaximum
                bMinValue:self.bounds.origin.x
                bMaxValue:self.bounds.size.width
           ],
 
     .y = [self translate:dataPoint.y
-               aMinValue:[[self getWidgetTester] sensorMinimum]
-               aMaxValue:[[self getWidgetTester] sensorMaximum]
+               aMinValue:self.widgetTester.sensorMinimum
+               aMaxValue:self.widgetTester.sensorMaximum
                bMinValue:self.bounds.origin.y
                bMaxValue:self.bounds.size.height
           ]
@@ -117,15 +117,15 @@ static void *VoltagePlotViewKVOContext;
     .x = [self translate:viewportPoint.x
                aMinValue:self.bounds.origin.x
                aMaxValue:self.bounds.size.width
-               bMinValue:[[self getWidgetTester] timeMinimum]
-               bMaxValue:[[self getWidgetTester] timeMaximum]
+               bMinValue:self.widgetTester.timeMinimum
+               bMaxValue:self.widgetTester.timeMaximum
           ],
     
     .y = [self translate:viewportPoint.y
                aMinValue:self.bounds.origin.y
                aMaxValue:self.bounds.size.height
-               bMinValue:[[self getWidgetTester] sensorMinimum]
-               bMaxValue:[[self getWidgetTester] sensorMaximum]
+               bMinValue:self.widgetTester.sensorMinimum
+               bMaxValue:self.widgetTester.sensorMaximum
           ]
   };
   
