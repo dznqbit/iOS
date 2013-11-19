@@ -86,6 +86,18 @@ static void *VoltagePlotViewKVOContext;
   
   [[NSColor blackColor] set];
   [NSBezierPath fillRect:bounds];
+
+  NSBezierPath *voltagePath = [NSBezierPath bezierPath];
+
+  NSPoint originPoint = { .x = 0.0, .y = bounds.size.height / 2 };
+  [voltagePath moveToPoint:originPoint];
+  
+  for (WidgetTestObservationPoint *point in self.widgetTester.testData) {
+    [voltagePath lineToPoint:[self translateDataPointToViewport:point]];
+  }
+  
+  [[NSColor redColor] set];
+  [voltagePath stroke];
   
   if (self.mouseInViewport) {
     NSColor *backgroundWhite = [NSColor colorWithDeviceWhite:1.0 alpha:0.8];
@@ -98,10 +110,9 @@ static void *VoltagePlotViewKVOContext;
 
 
     
-    NSString *initString = [NSString stringWithFormat:@" View(%li,%li) Data(%li,%li) ",
-                            (long)self.mouseViewportPosition.x, (long)self.mouseViewportPosition.y,
-                            (long)0, (long)0
-                            // self.mouseDataPosition.time, self.mouseDataPosition.voltage
+    NSString *initString = [NSString stringWithFormat:@" View(%.2f, %.2f)    Data(%.2f, %.2f) ",
+                            self.mouseViewportPosition.x, self.mouseViewportPosition.y,
+                            self.mouseDataPosition.observationTime, self.mouseDataPosition.voltage
                             ];
 
     NSMutableAttributedString *dataString = [[NSMutableAttributedString alloc] initWithString:initString
@@ -121,9 +132,7 @@ static void *VoltagePlotViewKVOContext;
 - (void)mouseMoved:(NSEvent *)theEvent {
   self.mouseInViewport = YES;
   self.mouseViewportPosition = [self convertPoint:theEvent.locationInWindow fromView:nil];
-  
-  NSLog(@"%li", [self.widgetTester.testData count]);
-  // self.mouseDataPosition = [self.widgetTester
+  self.mouseDataPosition = [self translateViewportPointToData:self.mouseViewportPosition];
   [self setNeedsDisplay:true];
 }
 
@@ -133,16 +142,30 @@ static void *VoltagePlotViewKVOContext;
   [self setNeedsDisplay:true];
 }
 
-- (NSPoint)translateDataPointToViewport:(NSPoint)dataPoint  {
+
+
+- (WidgetTestObservationPoint *)translateViewportPointToData:(NSPoint)viewportPoint  {
+  
+    NSUInteger index = (NSUInteger)[self translate:viewportPoint.x
+        aMinValue:self.bounds.origin.x
+        aMaxValue:self.bounds.size.width
+        bMinValue:0.0
+        bMaxValue:(double)[self.widgetTester.testData count]
+   ];
+  
+  return [self.widgetTester.testData objectAtIndex:index];
+}
+
+- (NSPoint)translateDataPointToViewport:(WidgetTestObservationPoint *)dataPoint  {
   NSPoint viewportPoint = {
-    .x = [self translate:dataPoint.x
+    .x = [self translate:dataPoint.observationTime
                aMinValue:self.widgetTester.timeMinimum
                aMaxValue:self.widgetTester.timeMaximum
                bMinValue:self.bounds.origin.x
                bMaxValue:self.bounds.size.width
           ],
 
-    .y = [self translate:dataPoint.y
+    .y = [self translate:dataPoint.voltage
                aMinValue:self.widgetTester.sensorMinimum
                aMaxValue:self.widgetTester.sensorMaximum
                bMinValue:self.bounds.origin.y
@@ -150,26 +173,6 @@ static void *VoltagePlotViewKVOContext;
           ]
   };
   return viewportPoint;
-}
-
-- (NSPoint)translateViewportPointToData:(NSPoint)viewportPoint  {
-  NSPoint dataPoint = {
-    .x = [self translate:viewportPoint.x
-               aMinValue:self.bounds.origin.x
-               aMaxValue:self.bounds.size.width
-               bMinValue:self.widgetTester.timeMinimum
-               bMaxValue:self.widgetTester.timeMaximum
-          ],
-    
-    .y = [self translate:viewportPoint.y
-               aMinValue:self.bounds.origin.y
-               aMaxValue:self.bounds.size.height
-               bMinValue:self.widgetTester.sensorMinimum
-               bMaxValue:self.widgetTester.sensorMaximum
-          ]
-  };
-  
-  return dataPoint;
 }
 
 - (double)translate:(double)aValue aMinValue:(double)aMinValue aMaxValue:(double)aMaxValue bMinValue:(double)bMinValue bMaxValue:(double)bMaxValue {

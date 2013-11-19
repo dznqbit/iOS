@@ -16,6 +16,7 @@
 
 @property (nonatomic,assign)BOOL mouseInViewport;
 @property (nonatomic,assign)NSPoint mouseViewportPosition;
+@property (nonatomic,assign)NSPoint mouseTranslatedViewportPosition;
 @property (nonatomic,weak)WidgetTestObservationPoint *mouseDataPosition;
 
 - (void)setWidgetTester:(WidgetTester *)theWidgetTester;
@@ -24,8 +25,8 @@
 - (void)startWatchingWidgetTester;
 - (void)stopWatchingWidgetTester;
 
-- (NSPoint)translateViewportPointToData:(NSPoint)viewportPoint;
-- (NSPoint)translateDataPointToViewport:(NSPoint)dataPoint;
+- (WidgetTestObservationPoint *)translateViewportPointToData:(NSPoint)viewportPoint;
+- (NSPoint)translateDataPointToViewport:(WidgetTestObservationPoint *)dataPoint;
 
 - (double)translate:(double)aValue aMinValue:(double)originMinValue aMaxValue:(double)originMaxValue bMinValue:(double)bMinValue bMaxValue:(double)bMaxValue;
 @end
