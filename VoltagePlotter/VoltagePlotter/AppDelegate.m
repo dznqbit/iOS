@@ -26,7 +26,9 @@
 }
 
 - (IBAction)pressedSummarize:(id)sender {
-  NSLog(@"%@", self.widgetTester.summary);
+  NSPasteboard *pasteboard = [NSPasteboard generalPasteboard];
+  [pasteboard clearContents];
+  [pasteboard writeObjects: @[self.widgetTester.summary]];
 }
 
 - (IBAction)selectedDrawMode:(id)sender {

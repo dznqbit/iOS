@@ -17,7 +17,7 @@
 @property (nonatomic,assign)NSUInteger drawMode;
 @property (nonatomic,assign)BOOL mouseInViewport;
 @property (nonatomic,assign)NSPoint mouseViewportPosition;
-@property (nonatomic,assign)NSPoint mouseTranslatedViewportPosition;
+@property (nonatomic,assign)NSPoint dataViewportPosition;
 @property (nonatomic,weak)WidgetTestObservationPoint *mouseDataPosition;
 
 - (void)setWidgetTester:(WidgetTester *)theWidgetTester;

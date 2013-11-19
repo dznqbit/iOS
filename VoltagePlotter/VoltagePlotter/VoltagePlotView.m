@@ -165,6 +165,13 @@ static void *VoltagePlotViewKVOContext;
                          NSForegroundColorAttributeName : [NSColor blackColor],
                          NSBackgroundColorAttributeName : backgroundWhite
                          };
+      
+      [[NSColor colorWithCalibratedRed:0.2 green:0.2 blue:0.2 alpha:1.0] set];
+      
+      NSBezierPath *dotPath = [NSBezierPath bezierPath];
+      double circleRadius = 5.0;
+      [dotPath appendBezierPathWithOvalInRect: NSMakeRect(self.dataViewportPosition.x - circleRadius, self.dataViewportPosition.y - circleRadius, circleRadius * 2, circleRadius * 2)];
+      [dotPath fill];
   }
   
   NSString *initString = [NSString stringWithFormat:@" View(%.2f, %.2f)    Data(%.2f, %.2f) ",
@@ -189,6 +196,7 @@ static void *VoltagePlotViewKVOContext;
   self.mouseInViewport = YES;
   self.mouseViewportPosition = [self convertPoint:theEvent.locationInWindow fromView:nil];
   self.mouseDataPosition = [self translateViewportPointToData:self.mouseViewportPosition];
+  self.dataViewportPosition = [self translateDataPointToViewport:self.mouseDataPosition];
   [self setNeedsDisplay:true];
 }
 
