@@ -19,4 +19,8 @@
 - (void)startWatchingWidgetTester;
 - (void)stopWatchingWidgetTester;
 
+- (NSPoint)translateViewportPointToData:(NSPoint)viewportPoint;
+- (NSPoint)translateDataPointToViewport:(NSPoint)dataPoint;
+
+- (double)translate:(double)aValue aMinValue:(double)originMinValue aMaxValue:(double)originMaxValue bMinValue:(double)bMinValue bMaxValue:(double)bMaxValue;
 @end
