@@ -656,18 +656,18 @@
                 <rect key="frame" x="0.0" y="0.0" width="480" height="360"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <tabView translatesAutoresizingMaskIntoConstraints="NO" id="srA-aI-rPz">
-                        <rect key="frame" x="13" y="64" width="454" height="290"/>
+                    <tabView misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="srA-aI-rPz">
+                        <rect key="frame" x="13" y="41" width="454" height="313"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <font key="font" metaFont="system"/>
                         <tabViewItems>
                             <tabViewItem label="Plot" identifier="1" id="vOo-k9-kjp">
                                 <view key="view" id="iw5-WW-47a">
-                                    <rect key="frame" x="10" y="33" width="434" height="244"/>
+                                    <rect key="frame" x="10" y="33" width="434" height="267"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <customView translatesAutoresizingMaskIntoConstraints="NO" id="Bdj-At-Lg2" customClass="VoltagePlotView">
-                                            <rect key="frame" x="17" y="37" width="400" height="204"/>
+                                        <customView misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bdj-At-Lg2" customClass="VoltagePlotView">
+                                            <rect key="frame" x="17" y="37" width="400" height="227"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         </customView>
                                         <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="EBS-0F-fEM">
@@ -716,11 +716,35 @@
                             </tabViewItem>
                         </tabViewItems>
                     </tabView>
+                    <button verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eux-ZF-VQR">
+                        <rect key="frame" x="14" y="13" width="192" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title="Generate New Test Data" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Ol4-3m-fmz">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                    </button>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yWo-Bv-GSZ">
+                        <rect key="frame" x="334" y="13" width="132" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="120" id="cBE-sK-vkT"/>
+                        </constraints>
+                        <buttonCell key="cell" type="push" title="Summarize" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="FEk-I8-LnI">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                    </button>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="eux-ZF-VQR" firstAttribute="top" secondItem="srA-aI-rPz" secondAttribute="bottom" constant="10" id="2pc-1b-brC"/>
                     <constraint firstItem="srA-aI-rPz" firstAttribute="top" secondItem="372" secondAttribute="top" constant="12" symbolic="YES" id="2xy-8x-eu7"/>
+                    <constraint firstItem="eux-ZF-VQR" firstAttribute="leading" secondItem="srA-aI-rPz" secondAttribute="leading" id="6lp-9n-Ony"/>
+                    <constraint firstItem="yWo-Bv-GSZ" firstAttribute="baseline" secondItem="eux-ZF-VQR" secondAttribute="baseline" id="7tO-ll-LzX"/>
                     <constraint firstItem="srA-aI-rPz" firstAttribute="leading" secondItem="372" secondAttribute="leading" constant="20" symbolic="YES" id="L1U-vY-hdM"/>
                     <constraint firstAttribute="trailing" secondItem="srA-aI-rPz" secondAttribute="trailing" constant="20" symbolic="YES" id="NQ2-u7-GgD"/>
+                    <constraint firstAttribute="bottom" secondItem="eux-ZF-VQR" secondAttribute="bottom" constant="20" symbolic="YES" id="Oee-tw-XQs"/>
+                    <constraint firstItem="yWo-Bv-GSZ" firstAttribute="trailing" secondItem="srA-aI-rPz" secondAttribute="trailing" id="Xsy-Iq-BvM"/>
                     <constraint firstAttribute="bottom" secondItem="srA-aI-rPz" secondAttribute="bottom" constant="74" id="gHH-Bz-jPS"/>
                 </constraints>
             </view>
