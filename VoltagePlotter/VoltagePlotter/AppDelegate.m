@@ -30,7 +30,7 @@
 }
 
 - (IBAction)selectedDrawMode:(id)sender {
-  NSLog(@"selected %li", (long)[sender selectedSegment]);
+  self.voltagePlotView.drawMode = [sender selectedSegment];
 }
 
 @end

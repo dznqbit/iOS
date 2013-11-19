@@ -107,25 +107,65 @@ static void *VoltagePlotViewKVOContext;
 }
 
 - (void)drawBackground {
-  [[NSColor blackColor] set];
-  [NSBezierPath fillRect:[self bounds]];
+  switch(self.drawMode) {
+    case 1: // BAD
+
+      break;
+      
+    case 2: // UGLY
+      break;
+      
+    default: // GOOD
+      [[NSColor whiteColor] set];
+      [NSBezierPath fillRect:[self bounds]];
+  }
 }
 
 - (void)drawVoltagePath:(NSBezierPath *)voltagePath {
-  [[NSColor redColor] set];
-  [voltagePath stroke];
+  switch(self.drawMode) {
+    case 1: // BAD
+      
+      break;
+      
+    case 2: // UGLY
+      break;
+      
+    default: // GOOD
+      [[NSColor colorWithCalibratedRed:0.2 green:0.2 blue:0.2 alpha:1.0] set];
+      [voltagePath stroke];
+      
+  }
 }
 
 - (void)drawMouseHover {
   NSColor *backgroundWhite = [NSColor colorWithDeviceWhite:1.0 alpha:0.8];
   
-  NSDictionary *attrDictionary = @{
-                                   NSFontAttributeName : [NSFont fontWithName:@"Comic Sans MS" size:14.0],
-                                   NSForegroundColorAttributeName : [NSColor blackColor],
-                                   NSBackgroundColorAttributeName : backgroundWhite
-                                   };
+  NSDictionary *attrDictionary = nil;
   
-  
+  switch(self.drawMode) {
+    case 1: // BAD
+      attrDictionary = @{
+                         NSFontAttributeName : [NSFont fontWithName:@"Comic Sans MS" size:14.0],
+                         NSForegroundColorAttributeName : [NSColor blackColor],
+                         NSBackgroundColorAttributeName : backgroundWhite
+                         };
+      break;
+      
+    case 2: // UGLY
+      attrDictionary = @{
+                         NSFontAttributeName : [NSFont fontWithName:@"Comic Sans MS" size:14.0],
+                         NSForegroundColorAttributeName : [NSColor blackColor],
+                         NSBackgroundColorAttributeName : backgroundWhite
+                         };
+      break;
+      
+    default: // GOOD
+      attrDictionary = @{
+                         NSFontAttributeName : [NSFont fontWithName:@"Courier New" size:14.0],
+                         NSForegroundColorAttributeName : [NSColor blackColor],
+                         NSBackgroundColorAttributeName : backgroundWhite
+                         };
+  }
   
   NSString *initString = [NSString stringWithFormat:@" View(%.2f, %.2f)    Data(%.2f, %.2f) ",
                           self.mouseViewportPosition.x, self.mouseViewportPosition.y,
